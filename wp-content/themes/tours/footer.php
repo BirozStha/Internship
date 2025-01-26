@@ -4,10 +4,10 @@
         <div class="row footer-top-29">
             <div class="col-lg-4 col-md-6 footer-list-29">
                 <h6 class="footer-title-29">Contact Info </h6>
-                <p class="mb-2 pe-xl-5">Address : Tours, 10001, 5th Avenue, #06 lane street, NY - 62617.
+                <p class="mb-2 pe-xl-5">Address :Nepal
                 </p>
-                <p class="mb-2">Phone Number : <a href="tel:+1(21) 234 4567">+1(21) 234 4567</a></p>
-                <p class="mb-2">Email : <a href="mailto:info@example.com">info@example.com</a></p>
+                <p class="mb-2">Phone Number :<a href="tel:9840188324">9840188324</a></p>
+                <p class="mb-2">Email : <a href="mailto:info@example.com">birozshrestha@gmail.com</a></p>
                 <div class="mt-4">
                     <ul class="social">
                         <li><a href="#facebook"><i class="fab fa-facebook-f"></i></a>
@@ -26,11 +26,9 @@
             <div class="col-lg-2 col-md-3 col-6 footer-list-29 mt-md-0 mt-4">
                 <ul>
                     <h6 class="footer-title-29">Quick Links</h6>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#workwithus">Work with us</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="#rewards">Rewards</a></li>
+                    <li><a href="<?php echo get_permalink(get_page_by_path('about')); ?>">About Us</a></li>
+                    <li><a  href="<?php echo get_permalink(get_page_by_path('tours')); ?>">Tours</a></li>
+                    <li><a href="<?php echo get_permalink(get_page_by_path('contact')); ?>">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-lg-2 col-md-3 col-6 ps-lg-5 ps-lg-4 footer-list-29 mt-md-0 mt-4">

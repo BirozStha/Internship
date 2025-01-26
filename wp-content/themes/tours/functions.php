@@ -17,3 +17,5 @@ function tours_scripts()
     //wp_enqueue_script('jquery',get_template_directory_uri() .'/assets/js/jquery-3.3.1.min.js',[],'1.0.0',true);
 
 }
+
+require_once get_template_directory().'/inc/travel-menu-walker.php';
