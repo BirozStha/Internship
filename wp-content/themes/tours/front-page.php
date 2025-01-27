@@ -1,8 +1,68 @@
 <?php get_header(); ?>
 
 
-    <!-- banner section -->
-    <div class="slideshow">
+  <!-- banner section -->
+    <?php
+        $args = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => '4',
+        // 'catagory_name' => 'slider',
+        'tax_query' => array(
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'slug',
+                    'terms'    => 'slider',
+                ),
+            ),
+
+        );
+
+        // The Query.
+        $the_query = new WP_Query( $args );
+
+        // The Loop.
+        if ( $the_query->have_posts() ) {
+            echo '<div class="slideshow">';
+            echo '<div class="holder">';
+            // echo '<ul>';
+            $slide_number = 1;
+            while ( $the_query->have_posts() ) {
+                $the_query->the_post();
+                // echo '<li>' . esc_html( get_the_title() ) . '</li>';
+        ?>
+                <div class="slide slide-<?php echo esc_attr($slide_number); ?> ">
+                    <span class="container">
+                        <span class="banner-content">
+                            <h3> <?php echo get_the_title() ?></h3>
+                            <p> <?php echo get_the_content() ?></p>
+                            <a class="btn btn-style mt-sm-5 mt-4" href="about.html">Explore More</a>
+                        </span>
+                    </span>
+                </div>
+            
+        <?php
+                $slide_number++; 
+            }
+            echo '</div>'; // Close holder
+
+            // Add navigation controls (if needed)
+            echo '<div class="steps"></div>';
+            echo '<a href="#" class="prev"><i class="fas fa-arrow-left"></i></a>';
+            echo '<a href="#" class="next"><i class="fas fa-arrow-right"></i></a>';
+
+            echo '</div>'; // Close slideshow
+            // echo '</ul>';
+        } else {
+            esc_html_e( 'Sorry, no posts matched your criteria.' );
+        }
+        // Restore original Post Data.
+        wp_reset_postdata();
+    ?>
+  <!-- //banner section -->
+
+    <!-- original banner section -->
+    <!-- <div class="slideshow">
         <div class="holder">
             <div class="slide slide-1">
                 <span class="container">
@@ -44,8 +104,10 @@
         <div class="steps"></div>
         <a href="#" class="prev"><i class="fas fa-arrow-left"></i></a>
         <a href="#" class="next"><i class="fas fa-arrow-right"></i></a>
-    </div>
+    </div> -->
     <!-- //banner section -->
+
+
 
     <!-- booking form section -->
     <section class="w3l-form-main py-5" id="book">
@@ -105,9 +167,75 @@
     </section>
     <!-- //booking form section -->
 
-    
-    <!-- about section -->
-    <section class="w3l-aboutblock py-lg-5 py-4" id="about">
+ <!-- orginsl about section -->
+    <?php
+        $args = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => '1',
+        // 'catagory_name' => 'slider',
+        'tax_query' => array(
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'slug',
+                    'terms'    => 'about',
+                ),
+            ),
+
+        );
+
+        // The Query.
+        $the_query = new WP_Query( $args );
+
+        // The Loop.
+        if ( $the_query->have_posts() ) {
+
+            // echo '<ul>';
+ 
+            while ( $the_query->have_posts() ) {
+                $the_query->the_post();
+                // echo '<li>' . esc_html( get_the_title() ) . '</li>';
+        ?>
+          <section class="w3l-aboutblock py-lg-5 py-4" id="about">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                           <?php echo get_the_content() ?>
+                        </div>
+                        <div class="col-lg-6 ps-xl-5 ps-lg-4 mt-lg-0 mt-5">
+                            <div class="title-main">
+                                <p><?php echo get_the_title()?></p>
+                                <h3 class="title-style">Plan Your Trip with Tours</h3>
+                            </div>
+                            <p class="mt-3">Lorem ipsum viverra feugiat. Pellen tesque libero ut justo,
+                                ultrices in ligula. Semper at tempufddfel. Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit.</p>
+                            <ul class="mt-4 list-style-lis">
+                                <li><i class="fas fa-check-circle"></i>2000+ Our Worldwide Guide</li>
+                                <li class="mt-2"><i class="fas fa-check-circle"></i>100% Trusted Tour Agency</li>
+                                <li class="mt-2"><i class="fas fa-check-circle"></i>24+ Years of Experience</li>
+                                <li class="mt-2"><i class="fas fa-check-circle"></i>100% Travelers are Happy</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-style mt-5">Booking Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        <?php
+                 
+            }
+            // echo '</ul>';
+        } else {
+            esc_html_e( 'Sorry, no posts matched your criteria.' );
+        }
+        // Restore original Post Data.
+        wp_reset_postdata();
+    ?>
+ <!-- //about section -->
+
+    <!-- orginsl about section -->
+    <!-- <section class="w3l-aboutblock py-lg-5 py-4" id="about">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -131,8 +259,85 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- //about section -->
+
+
+    <?php
+        $args = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => '6',
+        // 'catagory_name' => 'slider',
+        'tax_query' => array(
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'slug',
+                    'terms'    => 'tour',
+                ),
+            ),
+
+        );
+
+        // The Query.
+        $the_query = new WP_Query( $args );
+        echo' <section class="w3l-index5 pb-5 pt-4">
+                 <div class="container-fluid py-lg-5 py-md-4 py-2">
+                    <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:600px;">
+                        <p>Featured tours</p>
+                        <h3 class="title-style">Most Popular Tours</h3>
+                    </div>
+                    <div class="inner-sec-w3layouts pb-4">
+                        <div class="owl-three owl-carousel owl-theme">';
+                        // The Loop.
+                            if ( $the_query->have_posts() ) {
+
+                                // echo '<ul>';
+                                while ( $the_query->have_posts() ) {
+                                    $the_query->the_post();
+                                    // echo '<li>' . esc_html( get_the_title() ) . '</li>';
+        ?>
+                                        <div class="item">
+                                            <div class="content-left-sec">
+                                                <a class="blog-link d-block zoom-image" href="tours.html"><?php echo get_the_content()?></a>
+                                                <div class="blog-info">
+                                                    <ul class="rating-list mb-2">
+                                                        <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                                        <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                                        <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                                        <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                                        <li><i class="fas fa-star-half-alt"></i></li>
+                                                        <li class="ms-1">4.07</li>
+                                                    </ul>
+                                                    <a href="tours.html" class="to-title">Discovery Best Tours</a>
+                                                    <p class="mt-1"><i class="fas fa-map-marker-alt me-1"></i>Central Park West NY, USA</p>
+                                                    <div class="to-price mt-2">
+                                                        <label>From</label> <span>$39.00</span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between mt-4">
+                                                        <p><i class="far fa-clock me-1"></i>10 Days</p>
+                                                        <a href="tours.html" class="btn btn-style btn-style-primary">Explore<i
+                                                                class="fas fa-arrow-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+        <?php
+      
+            }
+        echo '          </div>
+                    </div>
+                </div>
+            </section>';
+
+        } else {
+            esc_html_e( 'Sorry, no posts matched your criteria.' );
+        }
+        // Restore original Post Data.
+        wp_reset_postdata();
+    ?>
+
 
     <!-- tours slider section -->
     <section class="w3l-index5 pb-5 pt-4">
@@ -143,6 +348,7 @@
             </div>
             <div class="inner-sec-w3layouts pb-4">
                 <div class="owl-three owl-carousel owl-theme">
+                    
                     <div class="item">
                         <div class="content-left-sec">
                             <a class="blog-link d-block zoom-image" href="tours.html"><img src="<?php echo get_template_directory_uri() ?>/assets/images/s1.jpg"
