@@ -7,6 +7,3 @@
     <?php wp_head(); ?>
 </head>
 <body>
-<hr>
-<h2>THis is header</h2>
-<hr>

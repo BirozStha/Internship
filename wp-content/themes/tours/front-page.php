@@ -547,11 +547,17 @@
         echo'<section class="w3_stats py-5" id="stats">';
             echo'<div class="container py-lg-5 py-md-4 py-2">';
              echo'    <div class="title-main text-center mx-auto mb-5" style="max-width:600px;">';
-                echo"<p>". get_the_title()."</p>";
-                echo '<h3 class="title-style text-white">'. get_the_excerpt().'</h3>
-            </div>';
+                // echo"<p>". get_the_title()."</p>";
+                // echo '<h3 class="title-style text-white">'. get_the_excerpt().'</h3>
+            
                         // The Loop.
         if ( $the_query->have_posts() ) {
+
+            $the_query->the_post();
+                echo"<p>". get_the_title()."</p>";
+                echo '<h3 class="title-style text-white">'. get_the_excerpt().'</h3>';
+                echo '</div>';
+
         ?> <?php echo get_the_content()?>
         <?php
 
@@ -694,7 +700,7 @@
 
 
     <!-- why section -->
-    <section class="w3l-whyblock pb-5 pt-2">
+    <section class="w3l-whyblock pb-5 pt-2">biroz
         <div class="container pb-lg-5 pb-md-4 pb-2">
             <div class="row align-items-center">
                 <div class="col-lg-6">
