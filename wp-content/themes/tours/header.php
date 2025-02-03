@@ -20,7 +20,7 @@
                     <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
                     <span class="navbar-toggler-icon fa icon-close fa-times"></span>
                 </button>
-                <?php
+                <?php   
                     wp_nav_menu([
                         'menu' => 'menu-1',
                         'menu_class' => 'navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll',

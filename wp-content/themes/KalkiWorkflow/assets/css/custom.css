@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding and border are included in element dimensions */
+}
+
+/* Full-screen banner section */
+.banner-section {
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    position: relative;
+    background: rgba(60, 90, 251, 0.45);
+}
+
+/* Banner image to cover the screen */
+.banner-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Centered banner content */
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+/* Rectangle with skew effect */
+.rectangle {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.7); /* Solid black background */
+    padding: 20px 40px;
+    transform: skewX(-15deg); /* Tilt the rectangle */
+    transform-origin: center;
+    border: none;
+    margin-bottom: 20px;
+    position: relative; /* Required for button positioning */
+
+}
+
+/* Text inside the rectangle */
+.rectangle h1 {
+    color: white;
+    margin: 0;
+    font-size: 3rem;
+    transform: skewX(15deg); /* Counter-skew the text */
+    display: inline-block;
+    line-height: 1.2;
+    font-weight: normal;
+}
+
+
+.bold {
+    font-weight: bold;
+    width: auto;
+}
+
+/* Button styles */
+.btn {
+    display: block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 20px;
+    position: absolute;
+    bottom: -20px; /* Adjust to touch the bottom of the rectangle */
+    left: 50%;
+    transform: translateX(-50%) skewX(15deg); /* Center and skew the button */
+    
+    text-align: center;
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+/* Fixed navigation menu at the bottom right */
+.main-nav {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px); 
+    z-index: 10;
+    text-align: right;
+    width: 100%;
+    padding: 10px 0;
+}
+
+/* Navigation menu list */
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+    display: inline-flex;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+.nav-menu li {
+    margin: 0;
+    
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-weight: normal;
+
+}
+
+.nav-menu a:hover {
+    color: #F0F0F0;
+}
+
+.container-achieve {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    /* text-align: center;       */
+    background-color: #F9F9F9;
+    margin: 0;
+    padding: 50px;
+}
+.achieve {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    /* background-color: #fff;  */
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  */
+    margin: 0;
+}
+.serv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    /* text-align: center;       */
+    background-color: #F9F9F9;
+    margin: 0;
+    padding: 50px;
+    position: relative;
+
+}
+.service{
+    max-width: 1500px;
+    width: 100%;
+    padding: 20px;
+    /* background-color: #fff;  */
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  */
+    margin-left: 0; /* Aligns the div to the left */
+    margin-right: auto;
+
+}
+
+
+/* Circle Container - Move Circles Above the Image */
+.circle-container {
+    position: absolute;
+    top: 30%;
+    right: 15%; /* Adjusted to prevent cramping */
+    transform: translateY(-50%);
+    width: 350px; /* Increased container size */
+    height: 300px;
+    position: relative;
+    z-index: 10; /* Ensures circles appear above the background */
+}
+
+/* Common Circle Styles */
+.circle {
+    width: 200px;  
+    height: 200px; 
+    background-color: #fefefe; 
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    position: absolute;
+}
+
+.circle:hover {
+    background-color: #3498db; /* Light blue color */
+}   
+
+/* Positioning the Circles - Adjusted for Bigger Size */
+.circle-top {
+    top: -10px; /* Moves it higher */
+    left: 60%;
+    transform: translateX(-50%);
+}
+
+.circle-top i {
+    font-size: 24px; /* Adjust icon size */
+    margin-bottom: 5px; /* Spacing below the icon */
+}
+
+
+.circle-top h2 {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+
+.circle-top h3 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+
+.circle-bottom {
+    bottom: -250px; /* Moves it lower */
+    left: 70%;
+    transform: translateX(-50%);
+}
+
+/* Bottom Circle Icon */
+.circle-bottom i {
+    font-size: 30px;  /* Make the icon bigger */
+    margin-bottom: 10px; /* Space below the icon */
+
+}
+
+/* Title in Bottom Circle */
+.circle-bottom h1 {
+    font-size: 18px; /* Adjust the size of the title */
+    margin: 5px 0;
+}
+
+.circle-bottom h3 {
+    font-size: 14px; /* Adjust size of the description */
+    font-weight: normal;
+}
+
+
+
+.circle-left {
+    left: -120px; /* Moves it left */
+    top: 90%;
+    transform: translateY(-50%);
+}
+
+.circle-left i {
+    font-size: 30px;  /* Make the icon bigger */
+    margin-bottom: 10px; /* Space below the icon */
+
+}
+
+/* Title in Left Circle */
+.circle-left h1 {
+    font-size: 18px; /* Adjust the size of the title */
+    margin: 5px 0;
+}
+
+/* Description in Left Circle */
+.circle-left h3 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+
+.circle-right {
+    right: -200px; /* Moves it right */
+    top: 80%;
+    transform: translateY(-50%);
+}
+
+/* Right Circle Icon */
+.circle-right i {
+    font-size: 30px;  /* Make the icon bigger */
+    margin-bottom: 10px; /* Space below the icon */
+}
+
+/* Title in Right Circle */
+.circle-right h1 {
+    font-size: 18px; /* Adjust the size of the title */
+    margin: 5px 0;
+}
+
+/* Description in Right Circle */
+.circle-right h3 {
+    font-size: 14px;
+    font-weight: normal;
+}
