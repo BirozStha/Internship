@@ -1706,3 +1706,5 @@
 [03-Feb-2025 10:58:58 UTC] PHP Deprecated:  Constant E_STRICT is deprecated in C:\Users\Acer\Herd\wordpress\wp-content\plugins\query-monitor\collectors\environment.php on line 64
 [03-Feb-2025 10:58:59 UTC] PHP Deprecated:  Constant E_STRICT is deprecated in C:\Users\Acer\Herd\wordpress\wp-content\plugins\query-monitor\collectors\environment.php on line 64
 [03-Feb-2025 10:59:03 UTC] PHP Deprecated:  Constant E_STRICT is deprecated in C:\Users\Acer\Herd\wordpress\wp-content\plugins\query-monitor\collectors\environment.php on line 64
+[03-Feb-2025 11:01:04 UTC] PHP Deprecated:  Constant E_STRICT is deprecated in C:\Users\Acer\Herd\wordpress\wp-content\plugins\query-monitor\collectors\environment.php on line 64
+[03-Feb-2025 11:03:05 UTC] PHP Deprecated:  Constant E_STRICT is deprecated in C:\Users\Acer\Herd\wordpress\wp-content\plugins\query-monitor\collectors\environment.php on line 64

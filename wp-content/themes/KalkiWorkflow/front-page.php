@@ -117,7 +117,36 @@ get_header();
                     echo '<p>No content found.</p>';
                 }
             ?>
+            <!-- Circles in Plus Formation -->
+            <div class="circle-container">
+            <!-- Top -->
+                <div class="circle circle-top">
+                    <i class="fas fa-gem"></i> <!-- Diamond icon -->
+                    <h2>Automate</h2>
+                    <h3>You are just a step away from leaving those</h3>
+                </div>
 
+
+                <div class="circle circle-left">
+                    <i class="fa-solid fa-layer-group"></i> <!-- Layer icon -->
+                    <h1>Design</h1>
+                    <h3>You are just a step away from leaving those</h3>
+                </div>
+
+
+                <div class="circle circle-right">
+                    <i class="fa-solid fa-desktop"></i> 
+                    <h1>Development</h1>
+                    <h3>You are just a step away from leaving those</h3>
+                </div>
+
+
+                <div class="circle circle-bottom">
+                    <i class="fa-solid fa-gear"></i> <!-- Settings gear icon -->
+                    <h1>SEO</h1>
+                    <h3>You are just a step away from leaving those</h3>
+                </div>
+            </div>
         </div>
 
 
