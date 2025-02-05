@@ -567,9 +567,375 @@
     content: "";
     width: 2px;
     height: 50px;
-    background-color: lightgray;
+    background-color:#F5F5F5 ;
     position: absolute;
     right: -25px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+
+/* recent posts */
+.recent-posts {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0px 0;
+    background-color: white;
+}
+
+/* Header with Title & Button */
+.recent-posts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.recent-posts-header h2 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.black {
+    color: black;
+}
+
+.blue {
+    color: blue;
+}
+
+.view-all {
+    background: blue;
+    color: #F5F5F5;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.view-all:hover {
+    background: darkblue;
+}
+
+/* Post Grid */
+.recent-posts-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Post Card */
+.post-card {
+    width: 32%;
+    position: relative;
+    border-radius: 10px;
+    /* overflow: hidden; */
+}
+.post-card:hover{
+    color: blue;
+
+
+}
+
+/* Image Styling */
+.post-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Floating Info Box */
+.post-info {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0;  /* Keep it rectangular */
+    border: 2px solid #ddd; /* Light gray border */
+    position: absolute;
+    bottom: -40%; /* Moves it slightly up but avoids cutoff */
+    left: 12%;
+    width: 93%; /* Wider towards the right */
+    height: 130px; /* Increased height for better spacing */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* Title Styling */
+.post-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.post-info a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+/* Admin & Date */
+.post-info p {
+    font-size: 14px;
+    color: gray;
+    margin-top: 5px; /* Added margin to avoid it being cut off */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .recent-posts-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .post-card {
+        width: 100%;
+    }
+
+    .post-info {
+        bottom: -10%; /* Adjust for smaller screens */
+        height: auto; /* Let it adjust dynamically */
+    }
+}
+
+
+/* Contact Section Wrapper */
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0; /* Increased padding for top & bottom spacing */
+    margin-top: 50px; /* Adds extra space from the top */
+    background-color: #F9F9F9; /* Set background color for the entire section */
+    width: 100%; /* Ensures the section fills the width */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    margin-bottom: 0;
+    padding-bottom: 0; 
+}
+
+/* Inner Container */
+.contact-container {
+    width: 100%; /* Make the container fill the full width */
+    max-width: 2000px; /* Increase max-width for a wider container */
+    background: white; /* White background for the container */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;
+}
+
+/* Heading */
+.contact h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Paragraph/Text */
+.contact p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Links Inside Content */
+.contact a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Category Styling */
+.contact .post-categories {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* No Content Message */
+.no-content {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        width: 100%; /* Ensure container stretches full width on mobile */
+        padding: 30px;
+    }
+
+    .contact h2 {
+        font-size: 24px;
+    }
+
+    .contact p {
+        font-size: 14px;
+    }
+}
+
+
+/* Contact Form Styling */
+/* Make the Contact Section Wider */
+.wpcf7 {
+    max-width: 800px; /* Adjust width */
+    margin: auto;
+}
+
+/* Flexbox Layout for Two-Column Fields */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Individual Field Styling */
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Set Width for Left & Right Columns */
+.form-group.left, 
+.form-group.right {
+    width: 48%;
+}
+
+/* Remove Box Styling & Keep Only Underline */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    padding: 10px 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Make Textarea Behave Like a Single Line */
+.form-group textarea {
+    height: 40px;
+    resize: none;
+}
+
+/* Style the Placeholder */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: black;
+    opacity: 0.7;
+    font-size: 16px;
+}
+
+/* Submit Button Styling */
+.form-group [type="submit"] {
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 0;
+    transition: background 0.3s;
+}
+
+.form-group [type="submit"]:hover {
+    background: #333;
+}
+
+
+/* footer */
+
+.footer-container {
+    font-family: Arial, sans-serif;
+    margin-top: 0;
+}
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 18px;
+}
+
+.footer-logo {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-logo img {
+    width: 120px;
+}
+
+.footer-links, .footer-connect {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-links h4, .footer-connect h4 {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.footer-links ul, .footer-connect ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li, .footer-connect ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links a, .footer-connect a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #000;
+    font-size: 16px;
+}
+
+.footer-bottom a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-bottom a {
+        margin: 5px 0;
+    }
 }

@@ -256,53 +256,53 @@ function create_testimonial_post_type() {
 add_action('init', 'create_testimonial_post_type');
 ?>
 <!-- Testimonials Section -->
-<section class="testimonials">
-    <div class="testimonial-wrapper">
-        <button id="prevTestimonial" class="arrow left">
-            <img id="prevImage" src="" alt="Previous">
-            <span>&#8592;</span>
-        </button>
-        <div class="testimonial-content">
-            <div class="testimonial-slider">
-                <?php
-                $args = array(
-                    'post_type'      => 'testimonial',
-                    'posts_per_page' => -1,
-                    'post_status'    => 'publish',
-                    'order'          => 'DESC'
-                );
-                $query = new WP_Query($args);
-                $testimonials = [];
-                if ($query->have_posts()) :
-                    while ($query->have_posts()) : $query->the_post();
-                        $testimonials[] = array(
-                            'image' => get_the_post_thumbnail_url(get_the_ID(), 'medium'),
-                            'title' => get_the_title(),
-                            'content' => apply_filters('the_content', get_the_content()) // Fix content formatting
-                        );
-                    endwhile;
-                    wp_reset_postdata();
-                endif;
-                ?>
-                <?php foreach ($testimonials as $index => $testimonial) : ?>
-                    <div class="testimonial-slide" data-index="<?php echo $index; ?>">
-                        <div class="testimonial-img">
-                            <img src="<?php echo esc_url($testimonial['image']); ?>" alt="<?php echo esc_attr($testimonial['title']); ?>">
+    <section class="testimonials">
+        <div class="testimonial-wrapper">
+            <button id="prevTestimonial" class="arrow left">
+                <img id="prevImage" src="" alt="Previous">
+                <span>&#8592;</span>
+            </button>
+            <div class="testimonial-content">
+                <div class="testimonial-slider">
+                    <?php
+                    $args = array(
+                        'post_type'      => 'testimonial',
+                        'posts_per_page' => -1,
+                        'post_status'    => 'publish',
+                        'order'          => 'DESC'
+                    );
+                    $query = new WP_Query($args);
+                    $testimonials = [];
+                    if ($query->have_posts()) :
+                        while ($query->have_posts()) : $query->the_post();
+                            $testimonials[] = array(
+                                'image' => get_the_post_thumbnail_url(get_the_ID(), 'medium'),
+                                'title' => get_the_title(),
+                                'content' => apply_filters('the_content', get_the_content()) // Fix content formatting
+                            );
+                        endwhile;
+                        wp_reset_postdata();
+                    endif;
+                    ?>
+                    <?php foreach ($testimonials as $index => $testimonial) : ?>
+                        <div class="testimonial-slide" data-index="<?php echo $index; ?>">
+                            <div class="testimonial-img">
+                                <img src="<?php echo esc_url($testimonial['image']); ?>" alt="<?php echo esc_attr($testimonial['title']); ?>">
+                            </div>
+                            <div class="testimonial-text">
+                                <p><?php echo wp_kses_post($testimonial['content']); ?></p>
+                                <h3><?php echo esc_html($testimonial['title']); ?></h3>
+                            </div>
                         </div>
-                        <div class="testimonial-text">
-                            <p><?php echo wp_kses_post($testimonial['content']); ?></p>
-                            <h3><?php echo esc_html($testimonial['title']); ?></h3>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
+            <button id="nextTestimonial" class="arrow right">
+                <img id="nextImage" src="" alt="Next">
+                <span>&#8594;</span>
+            </button>
         </div>
-        <button id="nextTestimonial" class="arrow right">
-            <img id="nextImage" src="" alt="Next">
-            <span>&#8594;</span>
-        </button>
-    </div>
-</section>
+    </section>
 
 
 <!-- Counter -->
@@ -321,22 +321,91 @@ add_action('init', 'create_testimonial_post_type');
     </div>
 </section>
 
+<!-- recent post -->
+<section class="recent-posts">
+    <div class="recent-posts-header">
+        <h2><span class="black">Recent</span> <span class="blue">Posts</span></h2>
+        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="view-all">VIEW ALL</a>
+    </div>
 
+    <div class="recent-posts-container">
+        <?php
+        $args = array(
+            'post_type'      => 'post',
+            'posts_per_page' => 3,
+            'post_status'    => 'publish',
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+            'tax_query' => array(
+                            array(
+                                'taxonomy' => 'category',
+                                'field'    => 'slug',
+                                'terms'    => 'post',
+                            ),
+                        ),
 
-
-
-
-
-
-
-
+                    );
         
+        $query = new WP_Query($args);
 
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                $image = get_the_post_thumbnail_url(get_the_ID(), 'large') ?: 'https://via.placeholder.com/600';
+                $title = get_the_title();
+                $date = get_the_date('d M, Y');
+                $link = get_permalink();
+        ?>
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>">
+                    </div>
+                    <div class="post-info">
+                        <h3><a href="<?php echo esc_url($link); ?>"><?php echo esc_html($title); ?></a></h3>
+                        <p>Admin | <?php echo esc_html($date); ?></p>
+                    </div>
+                </div>
+        <?php
+            endwhile;
+            wp_reset_postdata();
+        else :
+            echo '<p>No posts found.</p>';
+        endif;
+        ?>
+    </div>
+</section>
 
+<section class="contact-section">
+    <div class="contact-container">
+        <?php
+        $args = array(
+            'post_type'      => 'post',
+            'name'           => 'have-an-idea', // 'postname' should be 'name' and use the slug
+            'posts_per_page' => 1,
+            'post_status'    => 'publish',
+            'tax_query'      => array(
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'slug',
+                    'terms'    => 'contact',
+                ),
+            ),
+        );
 
+        $new_page_query = new WP_Query($args);
+        if ($new_page_query->have_posts()) :
+        ?>
+            <?php while ($new_page_query->have_posts()) : $new_page_query->the_post(); ?>
+                <div class="contact">
+                    <?php the_content(); ?>
+                </div>
+            <?php endwhile;
+            wp_reset_postdata(); ?>
+        <?php else : ?>
+            <p class="no-content">No content found.</p>
+        <?php endif; ?>
+    </div>
+</section>
 
-    <!-- </main> -->
-<!-- </div> -->
 <?php
 get_footer(); // Load the footer template
 ?>
