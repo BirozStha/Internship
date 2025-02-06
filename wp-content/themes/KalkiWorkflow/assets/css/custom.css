@@ -89,7 +89,39 @@
     z-index: 10;
     text-align: right;
     width: 100%;
-    padding: 10px 0;
+    /* padding: 8px 20PX; */
+    padding: 0;
+    
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 106px; /* Adjust height as needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0; /* Remove extra margin */
+    padding: 0;
+    /* margin-right: 20px; */
+}
+
+.logo img {
+    height: 100%; /* Make logo stretch to navbar height */
+    max-height: 100px;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    object-fit: contain; /* Ensure it fits well */
 }
 
 /* Navigation menu list */
@@ -97,22 +129,24 @@
     list-style: none;
     margin: 0;
     padding: 20px;
-    display: inline-flex;
+    display: flex;
     gap: 20px;
     padding-top: 30px;
 }
 
 .nav-menu li {
     margin: 0;
+    display: inline;
     
 }
 
 .nav-menu a {
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     font-weight: normal;
+    padding: 5px 10px; /* Less padding for a compact look */
 
 }
 

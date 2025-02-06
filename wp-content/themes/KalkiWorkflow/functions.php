@@ -5,11 +5,16 @@ function kalki_style() {
 
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
     wp_enqueue_script('custom-carousel-js', get_template_directory_uri() . '/assets/js/featured.js', array('swiper-js', 'jquery'), null, true);
-    wp_enqueue_script('custom-catagory-js', get_template_directory_uri() . '/assets/js/custom.js', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'kalki_style');
 add_theme_support('post-thumbnails');
 add_theme_support('custom-logo');
+add_action('admin_enqueue_scripts','kalki_admin_style');
+
+function kalki_admin_style(){
+    wp_enqueue_script('custom-catagory-js', get_template_directory_uri() . '/assets/js/custom.js', array('jquery'), null, true);
+
+}
 
 add_action('category_add_form_fields', 'zAddTexonomyField_custom');
 function zAddTexonomyField_custom() {

@@ -27,40 +27,28 @@ get_header();
         </section>
 
        <!-- Navigation Menu -->
+       <!-- Navigation Menu -->
         <nav class="main-nav">
-            <?php
-            // Display the navigation menu
-            wp_nav_menu(array(
-                'menu' => 'kalki_menu',
-                'menu_class'     => 'nav-menu',
-            ));
-            ?>
-        </nav> 
-        <!-- Navigation Menu -->
-
-        <!-- referance -->
-        <!-- <section id="new-page-content" class="new-page-content">
-            <div class="container">
-                <?php
-                // Use WP_Query to fetch the content of a specific page (e.g., "Services")
-                $args = array(
-                    'post_type'      => 'page', 
-                    'pagename'       => 'home', 
-                    'posts_per_page' => 1, 
-                );
-                $new_page_query = new WP_Query($args);
-                if ($new_page_query->have_posts()) {
-                    while ($new_page_query->have_posts()) {
-                         $new_page_query->the_post();
-                        the_content(); // Display the content of the page
+            <div class="nav-container">
+                <div class="logo">
+                    <?php
+                    if (function_exists('the_custom_logo')) {
+                        the_custom_logo();
                     }
-                    wp_reset_postdata(); // Reset the post data
-                }else {
-                    echo '<p>No content found.</p>';
-                }
+                    ?>
+                </div>
+                <?php
+                // Display the navigation menu
+                wp_nav_menu(array(
+                    'menu' => 'kalki_menu',
+                    'menu_class' => 'nav-menu',
+                    'container'  => false // To avoid extra divs
+                ));
                 ?>
             </div>
-        </section> -->
+        </nav>
+
+        <!-- Navigation Menu -->
     
 
         <!-- achievement Content Below Banner -->
@@ -103,12 +91,14 @@ get_header();
                 if ($new_page_query->have_posts()) {
                     while ($new_page_query->have_posts()) {
                             $new_page_query->the_post();
-                            ?>
-                        <div class="service">
 
-                            <?php the_content(); ?>
+                            ?>
+
+                            <div class="service">
+
+                                <?php the_content(); ?>
                             
-                        </div>
+                            </div>
 
                             <?php
                     }
