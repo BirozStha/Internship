@@ -95,7 +95,7 @@
     display: flex;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: 106px; /* Adjust height as needed */
+    height: 99px; /* Adjust height as needed */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -194,6 +194,66 @@
     margin-right: auto;
 
 }
+
+/* Ensures the service section aligns properly */
+.container-mata-service .service {
+    display: flex;
+    flex-direction: row; /* Make sure the flex direction is row */
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    max-width: 1500px;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.container-mata-service .wp-block-media-text {
+    display: flex;
+    flex-direction: row-reverse; /* Reverse the order so image is on the right */
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container-mata-service .wp-block-media-text__media img {
+    border-radius: 50%; /* Make the image round */
+    object-fit: cover;  /* Ensure the image fills the container */
+    width: 200px;       /* Adjust the image size */
+    height: 200px;      /* Maintains aspect ratio */
+    position: relative;
+}
+
+.container-mata-service .wp-block-media-text__content {
+    padding-left: 20px;
+}
+
+.container-mata-service .wp-block-media-text__content h1 {
+    font-size: 36px; /* Increase category name size */
+    font-weight: bold;
+}
+
+.container-mata-service .wp-block-media-text__content p {
+    font-size: 18px; /* Increase category description size */
+}
+
+.view-all-button .button {
+    background-color: #007bff; /* Blue background */
+    color: white;              /* White text */
+    padding: 12px 25px;        /* Adjust padding for larger button */
+    font-size: 18px;           /* Make the button text bigger */
+    border: none;              /* Remove the border */
+    border-radius: 5px;        /* Rounded corners */
+    text-decoration: none;     /* Remove underline */
+    display: inline-block;     /* Ensure it aligns properly */
+    transition: background-color 0.3s ease; /* Smooth background change on hover */
+}
+
+.view-all-button .button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+
+
 
 
 /* Circle Container - Move Circles Above the Image */
@@ -410,38 +470,6 @@
 }
 
 /* Project Card */
-.project-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.project-card h3 {
-    font-size: 1.5rem;
-    margin-top: 10px;
-}
-
-.project-card p {
-    font-size: 1rem;
-    color: #555;
-}
-
-.posts-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-
 .post-item {
     width: 100%;
     max-width: 350px;
@@ -464,7 +492,6 @@
     padding: 2px;
     text-align: center;
 }
-
 /* Testimonial */
 .testimonials {
     display: flex;
@@ -486,7 +513,7 @@
     /* height: 100%;  */
 }
 .arrow {
-    flex: 0 0 30%; /* Same width as image */
+    flex: 0 0 150px; /* Same width as image */
     height: 270px; /* Increases height */
     background: blue;
     border: none;
@@ -498,8 +525,8 @@
     position: relative;
 }
 .arrow img {
-    width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 270px;
     object-fit: cover;
     opacity: 0.4;
     position: absolute;
@@ -608,14 +635,25 @@
     transform: translateY(-50%);
 }
 
+.counter-section-wrap{
+    width: 100%;
+    background-color: white;
+  }
 
 /* recent posts */
-.recent-posts {
+.recent-post-wrap{
     width: 100%;
+  }
+
+.recent-posts {
+    margin-top: 50px;
     max-width: 1200px;
     margin: auto;
-    padding: 0px 0;
-    background-color: white;
+    height: 470px;
+    padding: 100px 0;
+
+
+    /* background-color: white; */
 }
 
 /* Header with Title & Button */
@@ -654,6 +692,7 @@
 
 /* Post Grid */
 .recent-posts-container {
+    height: 275px;
     display: flex;
     justify-content: space-between;
     gap: 20px;
@@ -971,5 +1010,102 @@
 
     .footer-bottom a {
         margin: 5px 0;
+    }
+}
+
+/* for archieve */
+/* Container Styling */
+.archive-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Page Title */
+.archive-page-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* Grid Layout - Two Cards Per Row */
+.archive-service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Ensures exactly 2 cards per row */
+    gap: 40px; /* Space between cards */
+    justify-content: center;
+}
+
+/* Card Styling */
+.archive-service-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    padding: 40px; /* Increased padding */
+    width: 100%; /* Make it stretch properly */
+    max-width: 600px; /* Increase max width */
+    min-height: 350px; /* Ensure all cards have a minimum height */
+    display: flex;
+    flex-direction: column;
+}
+
+.archive-service-card:hover {
+    transform: translateY(-9px);
+}
+
+/* Card Content */
+.archive-service-content {
+    padding: 15px;
+}
+
+.archive-service-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.archive-service-excerpt {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Pagination */
+.archive-pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.archive-pagination a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #007bff;
+    color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.archive-pagination a:hover {
+    background: #007bff;
+    color: white;
+}
+
+/* No Services Message */
+.archive-no-services {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .archive-service-grid {
+        grid-template-columns: 1fr; /* 1 card per row on small screens */
     }
 }

@@ -8,47 +8,8 @@ get_header();
 <!-- <div id="primary" class="content-area"> -->
     <!-- <main id="main" class="site-main"> -->
 
-        <!-- Banner Section -->
-        <section class="banner-section">
-            <?php
-            $banner_image = get_template_directory_uri() . '/assets/img/banner.png';
-            ?>
-            <img src="<?php echo esc_url($banner_image); ?>" alt="Banner Image" class="banner-image">
-            <div class="banner-content">
-                <div class="rectangle">
-                    <h1>
-                        Automate 
-                        <br>
-                        <span class="bold">Workflow</span> With Us
-                    </h1>
-                    <a href="#" class="btn">VIEW MORE</a>
-                </div>
-            </div>
-        </section>
 
-       <!-- Navigation Menu -->
-       <!-- Navigation Menu -->
-        <nav class="main-nav">
-            <div class="nav-container">
-                <div class="logo">
-                    <?php
-                    if (function_exists('the_custom_logo')) {
-                        the_custom_logo();
-                    }
-                    ?>
-                </div>
-                <?php
-                // Display the navigation menu
-                wp_nav_menu(array(
-                    'menu' => 'kalki_menu',
-                    'menu_class' => 'nav-menu',
-                    'container'  => false // To avoid extra divs
-                ));
-                ?>
-            </div>
-        </nav>
 
-        <!-- Navigation Menu -->
     
 
         <!-- achievement Content Below Banner -->
@@ -79,89 +40,103 @@ get_header();
             ?>
         </div>
 
-        <!-- achievement Content Below Banner -->
+
+        <!-- serviceContent Below Banner -->
         <div class="container-mata-service serv">
             <?php
-                $args = array(
-                    'post_type'      => 'page', 
-                    'pagename'       => 'service', 
-                    'posts_per_page' => 1, 
-                );
-                $new_page_query = new WP_Query($args);
-                if ($new_page_query->have_posts()) {
-                    while ($new_page_query->have_posts()) {
-                            $new_page_query->the_post();
+            // Get category details
+            $category_slug = 'our_service'; // Change this to your actual category slug
+            $category = get_term_by('slug', $category_slug, 'category');
 
-                            ?>
+            if ($category) {
+                $category_id = $category->term_id;
+                $category_name = $category->name;
+                $category_description = $category->description;
 
-                            <div class="service">
+                // Explode the category name into two words
+                $category_name_parts = explode('_', $category_name);
+                $first_word = isset($category_name_parts[0]) ? ucfirst($category_name_parts[0]) : ''; // Capitalize the first word
+                $second_word = isset($category_name_parts[1]) ? ucfirst($category_name_parts[1]) : ''; // Capitalize the second word
 
-                                <?php the_content(); ?>
-                            
-                            </div>
-
-                            <?php
-                    }
-                    wp_reset_postdata(); 
-                }else {
-                    echo '<p>No content found.</p>';
-                }
+                // Fetch category image from custom field
+                $category_image = get_option('z_taxonomy_image' . $category_id);
+                // $default_image = get_template_directory_uri() . '/assets/img/default-service.jpg';
+                // $category_image = (!empty($category_image)) ? esc_url($category_image) : $default_image;
             ?>
 
+                <!-- Updated Category Section -->
+                <div class="service">
+                    <div class="wp-block-media-text">
+                        <figure class="wp-block-media-text__media">
+                            <img src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr($category_name); ?>">
+                        </figure>
+                        <div class="wp-block-media-text__content">
+                            <h1>
+                                <span style="color: black;"><?php echo $first_word; ?></span> 
+                                <span style="color: #007bff;"><?php echo $second_word; ?></span>
+                            </h1>
+                            <p><?php echo esc_html($category_description); ?></p>
+                            <div class="view-all-button">
+                            <a href="<?php echo get_category_link(get_cat_ID('our_service')); ?>" class="button">
+                                View All
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <?php
+            <?php } else {
+                echo '<p>Category not found.</p>';
+            } ?>
+
+
+
+                    <?php
+                    // Fetch posts from the category
                     $args = array(
-                        'post_type' => 'post',
-                        'post_status' => 'publish',
+                        'post_type'      => 'post',
+                        'post_status'    => 'publish',
                         'posts_per_page' => 4,
-                    // 'catagory_name' => 'slider',
-                    'tax_query' => array(
+                        'tax_query'      => array(
                             array(
                                 'taxonomy' => 'category',
                                 'field'    => 'slug',
                                 'terms'    => 'our_service',
                             ),
                         ),
-
                     );
 
-                    // The Query.
-                    $the_query = new WP_Query( $args );
+                    $the_query = new WP_Query($args);
 
-                    // The Loop.
-                    if ( $the_query->have_posts() ) {
-
+                    if ($the_query->have_posts()) {
                         $slide_number = 1;
-                        echo'<div class="circle-container">';
+                        echo '<div class="circle-container">';
 
-                        while ( $the_query->have_posts() ) {
+                        while ($the_query->have_posts()) {
                             $the_query->the_post();
-
-            ?>
-                        <!-- Top -->
-                        <div class="circle circle-<?php echo esc_attr($slide_number); ?>">
-                            <!-- <i class="fas fa-gem"></i>  -->
-                             <i class="fas"><?php echo get_the_content()?></i>
-                            <h2><?php echo get_the_title() ?></h2>
-                            <h3><?php echo get_the_excerpt() ?></h3>
-                        </div>
-                    
-
-             <?php
-                        $slide_number++; 
+                    ?>
+                            
+                            <div class="circle circle-<?php echo esc_attr($slide_number); ?>">
+                                <i class="fas"><?php echo get_the_content(); ?></i>
+                                <h2><?php echo get_the_title(); ?></h2>
+                                <h3><?php echo get_the_excerpt(); ?></h3>
+                            </div>
+                    <?php
+                            $slide_number++;
+                        }
+                        echo '</div>';
+                    } else {
+                        esc_html_e('Sorry, no posts matched your criteria.');
                     }
-                    echo '</div>';
 
-                } else {
-                    esc_html_e( 'Sorry, no posts matched your criteria.' );
-                }
-                // Restore original Post Data.
-                wp_reset_postdata();
-             ?>
+                    // Restore original Post Data
+                    wp_reset_postdata();
+                    ?>
         </div>
 
 
 
+        <!-- featured project -->
         <div class="projects-carousel-section">
             <!-- Left Section -->
             <div class="carousel-text-section">
@@ -173,79 +148,77 @@ get_header();
                 </div>
             </div>
 
-            <!-- Right Section: Carousel -->
-            <div class="carousel-container">
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <?php
-                            $args = array(
-                                'post_type'      => 'post',
-                                'post_status'    => 'publish',
-                                'posts_per_page' => 3, // Fetch 3 posts
-                                'tax_query'      => array(
-                                    array(
-                                        'taxonomy' => 'category',
-                                        'field'    => 'slug',
-                                        'terms'    => 'featured', // Change to your category slug
+                <!-- Right Section: Carousel -->
+                <div class="carousel-container">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <?php
+                                $args = array(
+                                    'post_type'      => 'post',
+                                    'post_status'    => 'publish',
+                                    'posts_per_page' => 3, // Fetch 3 posts
+                                    'tax_query'      => array(
+                                        array(
+                                            'taxonomy' => 'category',
+                                            'field'    => 'slug',
+                                            'terms'    => 'featured', // Change to your category slug
+                                        ),
                                     ),
-                                ),
-                            );
+                                );
 
-                            $the_query = new WP_Query($args);
+                                $the_query = new WP_Query($args);
 
-                            if ($the_query->have_posts()) {
-                                echo '<div class="posts-container">';
-
-                                while ($the_query->have_posts()) {
-                                    $the_query->the_post();
-                                    ?>
-                                    <div class="post-item">
-                                    <a class="blog-link d-block zoom-image">
-                                        <?php 
-                                            if (has_post_thumbnail()) {
-                                                the_post_thumbnail('small'); // Adjust size if needed
-                                            } else {
-                                                echo '<img src="https://via.placeholder.com/350x200" alt="Placeholder Image">';
-                                            }
+                                if ($the_query->have_posts()) {
+                                    while ($the_query->have_posts()) {
+                                        $the_query->the_post();
                                         ?>
-                                    </a>
-                                    
-                                        <h2><?php the_title(); ?></h2>
-                                        <p><?php the_excerpt(); ?></p>
-                                    </div>
-                                    <?php
+                                        <div class="swiper-slide">
+                                            <div class="post-item">
+                                                <a class="blog-link d-block zoom-image">
+                                                    <?php 
+                                                        if (has_post_thumbnail()) {
+                                                            the_post_thumbnail('small'); // Adjust size if needed
+                                                        } else {
+                                                            echo '<img src="https://via.placeholder.com/350x200" alt="Placeholder Image">';
+                                                        }
+                                                    ?>
+                                                </a>
+                                                <h2><?php the_title(); ?></h2>
+                                                <p><?php the_excerpt(); ?></p>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                } else {
+                                    echo '<p>No posts found.</p>';
                                 }
 
-                                echo '</div>';
-                            } else {
-                                echo '<p>No posts found.</p>';
-                            }
-
-                            wp_reset_postdata();
-                        ?>
+                                wp_reset_postdata();
+                            ?>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
 
-<!-- Testimonial -->
-<?php
-function create_testimonial_post_type() {
-    register_post_type('testimonial',
-        array(
-            'labels'      => array(
-                'name'          => __('Testimonials'),
-                'singular_name' => __('Testimonial'),
-            ),
-            'public'      => true,
-            'has_archive' => true,
-            'supports'    => array('title', 'editor', 'thumbnail'),
-        )
-    );
-}
-add_action('init', 'create_testimonial_post_type');
-?>
-<!-- Testimonials Section -->
+
+        <!-- Testimonial -->
+        <?php
+        function create_testimonial_post_type() {
+            register_post_type('testimonial',
+                array(
+                    'labels'      => array(
+                        'name'          => __('Testimonials'),
+                        'singular_name' => __('Testimonial'),
+                    ),
+                    'public'      => true,
+                    'has_archive' => true,
+                    'supports'    => array('title', 'editor', 'thumbnail'),
+                )
+            );
+        }
+        add_action('init', 'create_testimonial_post_type');
+        ?>
+    <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="testimonial-wrapper">
             <button id="prevTestimonial" class="arrow left">
