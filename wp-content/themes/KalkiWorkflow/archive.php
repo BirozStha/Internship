@@ -1,6 +1,19 @@
 <?php get_header(); ?>
 <div class="archive-container">
-    <h1 class="archive-page-title"><?php single_cat_title(); ?></h1>
+    <h1 class="archive-page-title">
+        <?php 
+        $title = single_cat_title('', false);
+        $title = str_replace('_', ' ', $title); // Replace underscore with space
+        $title_parts = explode(' ', $title, 2); // Split the title into two parts
+
+        if (!empty($title_parts[0]) && !empty($title_parts[1])) {
+            echo '<span style="color: black;">' . esc_html(ucfirst($title_parts[0])) . '</span> ';
+            echo '<span style="color: #007bff;">' . esc_html(ucfirst($title_parts[1])) . '</span>';
+        } else {
+            echo esc_html(ucfirst($title)); // Fallback if there's no space in title
+        }
+        ?>
+    </h1>
     
     <?php if (have_posts()) : ?>
         <div class="archive-service-grid">

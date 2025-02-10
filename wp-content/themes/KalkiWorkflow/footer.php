@@ -19,7 +19,8 @@
         <div class="footer-connect">
             <h4>Connect</h4>
             <ul>
-                <li>Kathmandu, Nepal 44600</li>
+                <li>Kathmandu, Nepal <br>44600</li>
+                <br>
                 <li><a href="#">Facebook</a></li>
                 <li><a href="#">Twitter</a></li>
                 <li><a href="#">LinkedIn</a></li>

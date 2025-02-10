@@ -52,12 +52,12 @@ get_header();
                 $category_id = $category->term_id;
                 $category_name = $category->name;
                 $category_description = $category->description;
-
+                
                 // Explode the category name into two words
                 $category_name_parts = explode('_', $category_name);
                 $first_word = isset($category_name_parts[0]) ? ucfirst($category_name_parts[0]) : ''; // Capitalize the first word
                 $second_word = isset($category_name_parts[1]) ? ucfirst($category_name_parts[1]) : ''; // Capitalize the second word
-
+                
                 // Fetch category image from custom field
                 $category_image = get_option('z_taxonomy_image' . $category_id);
                 // $default_image = get_template_directory_uri() . '/assets/img/default-service.jpg';
@@ -77,7 +77,7 @@ get_header();
                             </h1>
                             <p><?php echo esc_html($category_description); ?></p>
                             <div class="view-all-button">
-                            <a href="<?php echo get_category_link(get_cat_ID('our_service')); ?>" class="button">
+                            <a href="<?php echo get_category_link(get_cat_ID('our_service')); ?>" class="button">   
                                 View All
                             </a>
                             </div>
@@ -141,7 +141,7 @@ get_header();
             <!-- Left Section -->
             <div class="carousel-text-section">
                 <h2>Featured <span class="blue-text">Projects</span></h2>
-                <a href="#" class="view-all-btn">View All</a>
+                <a class='view-all-btn' href="<?php echo get_category_link(get_cat_ID('featured')); ?>" class="button">VIEW ALL</a>
                 <div class="carousel-navigation">
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
@@ -288,7 +288,8 @@ get_header();
 <section class="recent-posts">
     <div class="recent-posts-header">
         <h2><span class="black">Recent</span> <span class="blue">Posts</span></h2>
-        <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="view-all">VIEW ALL</a>
+        <a class='view-all' href="<?php echo get_category_link(get_cat_ID('post')); ?>" class="button">VIEW ALL</a>
+
     </div>
 
     <div class="recent-posts-container">

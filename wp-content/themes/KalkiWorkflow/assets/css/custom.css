@@ -962,9 +962,10 @@
 }
 
 .footer-links h4, .footer-connect h4 {
-    margin-bottom: 15px;
-    font-weight: bold;
-    font-size: 20px;
+    margin-bottom: 35px;
+    /* font-weight: bold ;    */
+    font-size: 17px;
+    color: #aaa;
 }
 
 .footer-links ul, .footer-connect ul {
@@ -987,8 +988,12 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: #000;
+    background-color: #000000;
     font-size: 16px;
+}
+
+.footer-bottom p{
+    color: #aaa;
 }
 
 .footer-bottom a {
@@ -1109,3 +1114,143 @@
         grid-template-columns: 1fr; /* 1 card per row on small screens */
     }
 }
+
+
+
+/* for single.php */
+.single-post-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.single-post-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.single-post-flex {
+    display: flex;
+    align-items: flex-start;
+    gap: 0; /* Adjust spacing between content and excerpt */
+}
+
+.single-post-body {
+    width: 40%;
+    height: 200px;
+}
+
+.single-post-excerpt {
+    width: 30%; /* Adjust width of excerpt */
+    padding: 10px;
+    border-left: 4px solid #000000; /* Blue left border */
+}
+
+
+.back-to-archive {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* about us page */
+/* below */
+/* Main container */
+.about-us-container {
+    text-align: center;
+    /* padding: 40px 20px; */
+    /* margin: 0 auto; */
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* About content styling */
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    padding: 0 30px;
+}
+
+/* Page title styling */
+.about-content h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+    text-align: left; /* Aligns the title to the left */
+}
+
+/* Paragraph styling */
+.about-content p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    /* color: #333; */
+}
+
+/* List styling */
+.about-content ul {
+    list-style-type: disc;
+    margin: 20px auto;
+    padding-left: 40px;
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-content ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    /* color: #444; */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-content h1 {
+        font-size: 2em;
+        text-align: left; /* Ensures left alignment on mobile too */
+    }
+
+    .about-content p {
+        font-size: 1em;
+    }
+
+    .about-content ul {
+        padding-left: 20px;
+    }
+}
+
+.about-us-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+
