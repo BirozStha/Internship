@@ -1192,14 +1192,15 @@
     max-width: 1200px;
     margin: 0 auto 40px auto;
     text-align: center;
-    padding: 0 30px;
+    padding: 0;
 }
 
 /* Page title styling */
 .about-content h1 {
-    font-size: 2.5em;
+    font-size: 5em;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 90px;
+    margin-top: 90px;
     color: #222;
     text-align: left; /* Aligns the title to the left */
 }
@@ -1207,8 +1208,9 @@
 /* Paragraph styling */
 .about-content p {
     font-size: 1.1em;
-    line-height: 1.8;
-    margin-bottom: 20px;
+    line-height: 1.5;
+    margin-bottom: 50px;
+    margin-left: 60px;
     /* color: #333; */
 }
 
@@ -1220,6 +1222,7 @@
     max-width: 600px;
     text-align: left;
 }
+
 
 .about-content ul li {
     font-size: 1.1em;
@@ -1248,9 +1251,189 @@
     width: 100%;
     height: auto;
     display: block;
+    margin-left: 60px;
+
 }
 
 
+.about-posts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 20px; /* Adjust the value as needed */
+    margin-bottom: 40px; /* Adjust the value as needed */
+    margin-left: 350px;
+    margin-right: 300px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+.about-post-item {
+    background: #F9F9F9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.about-post-item h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.about-post-excerpt {
+    font-size: 16px;
+    color: #666;
+}
+
+.about-title {
+    text-align: left;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 350px;
+}
+
+.about-title h1 {
+    font-size: 80px;
+    color: black;
+}
+
+.about-title h1 span {
+    color: blue;
+    font-size: 80px;
+    font-weight: bold;
+}
+ 
+
+/* team */
+.team-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Layout: Image on Left, Text on Right */
+.team-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.team-main {
+    flex: 1;
+}
+
+.team-main img {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.team-info {
+    flex: 1;
+}
+
+.team-info h2 {
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 40px;
+}
+
+.team-info h4 {
+    font-weight: normal;
+    margin-top: 10px;
+    font-size: 20px;
+}
+.team-info p {
+    font-weight: normal;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.team-member-text {
+    display: none;
+}
+
+.team-member-text.active {
+    display: block;
+}
+
+/* Navigation Arrows */
+.team-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-left: -465px;
+}
 
 
+.team-controls button {
+    background: rgb(253, 253, 253);
+    color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px; 
+    display: flex;
+}
+
+button:hover {
+    background: #555;
+    border-color: #bbb;
+}
+
+.team-thumbnails {
+    display: flex;
+    flex-direction: row; /* Horizontal alignment */
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+
+.team-thumb {
+    cursor: pointer;
+    border: 2px solid transparent;
+    padding: 5px;
+    transition: 0.3s;
+
+}
+
+.team-thumb.selected {
+    border: 2px solid blue;
+    border-radius: 5px;
+}
+
+.team-thumb img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.team-member-large {
+    display: none; /* Hide all images initially */
+}
+
+.team-member-large.active {
+    display: block; /* Show only the active member */
+}
+
+
+.project-advice {
+    text-align: center; /* Center the text */
+    padding: 200px; /* Add padding around */
+    background-color: #f5f5f5;
+}
+
+.project-advice h1 {
+    font-size: 48px; /* Bigger size */
+    font-weight: bold; /* Make it bold */
+}
 
