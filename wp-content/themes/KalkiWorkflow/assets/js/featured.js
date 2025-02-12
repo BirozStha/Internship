@@ -1,17 +1,22 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: 1,
         spaceBetween: 20,
         loop: true,
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: "#next-serv-btn", 
+            prevEl: "#prev-serv-btn",
         },
         breakpoints: {
-            768: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
             1024: { slidesPerView: 3 }
         }
     });
+
+    console.log("Prev Button:", $("#prev-serv-btn").length);
+    console.log("Next Button:", $("#next-serv-btn").length);
+
+
 
     const slides = document.querySelectorAll(".testimonial-slide");
     const prevBtn = document.getElementById("prevTestimonial");

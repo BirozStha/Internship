@@ -143,129 +143,135 @@ get_header();
                 <h2>Featured <span class="blue-text">Projects</span></h2>
                 <a class='view-all-btn' href="<?php echo get_category_link(get_cat_ID('featured')); ?>" class="button">VIEW ALL</a>
                 <div class="carousel-navigation">
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <button id="prev-serv-btn">←</button>
+                    <button id="next-serv-btn">→</button>
                 </div>
             </div>
 
-                <!-- Right Section: Carousel -->
-                <div class="carousel-container">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <?php
-                                $args = array(
-                                    'post_type'      => 'post',
-                                    'post_status'    => 'publish',
-                                    'posts_per_page' => 3, // Fetch 3 posts
-                                    'tax_query'      => array(
-                                        array(
-                                            'taxonomy' => 'category',
-                                            'field'    => 'slug',
-                                            'terms'    => 'featured', // Change to your category slug
-                                        ),
+            <!-- Right Section: Carousel -->
+            <div class="carousel-container">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <?php
+                            $args = array(
+                                'post_type'      => 'post',
+                                'post_status'    => 'publish',
+                                'posts_per_page' => -1, // Fetch 3 posts
+                                'tax_query'      => array(
+                                    array(
+                                        'taxonomy' => 'category',
+                                        'field'    => 'slug',
+                                        'terms'    => 'featured', // Change to your category slug
                                     ),
-                                );
+                                ),
+                            );
 
-                                $the_query = new WP_Query($args);
+                            $the_query = new WP_Query($args);
 
-                                if ($the_query->have_posts()) {
-                                    while ($the_query->have_posts()) {
-                                        $the_query->the_post();
-                                        ?>
-                                        <div class="swiper-slide">
-                                            <div class="post-item">
-                                                <a class="blog-link d-block zoom-image">
-                                                    <?php 
-                                                        if (has_post_thumbnail()) {
-                                                            the_post_thumbnail('small'); // Adjust size if needed
-                                                        } else {
-                                                            echo '<img src="https://via.placeholder.com/350x200" alt="Placeholder Image">';
-                                                        }
-                                                    ?>
-                                                </a>
-                                                <h2><?php the_title(); ?></h2>
-                                                <p><?php the_excerpt(); ?></p>
-                                            </div>
+                            if ($the_query->have_posts()) {
+                                while ($the_query->have_posts()) {
+                                    $the_query->the_post();
+                                    ?>
+                                    <div class="swiper-slide">
+                                        <div class="post-item">
+                                            <a class="blog-link d-block zoom-image">
+                                                <?php 
+                                                    if (has_post_thumbnail()) {
+                                                        the_post_thumbnail('small'); // Adjust size if needed
+                                                    } else {
+                                                        echo '<img src="https://via.placeholder.com/350x200" alt="Placeholder Image">';
+                                                    }
+                                                ?>
+                                            </a>
+                                            <h2><?php the_title(); ?></h2>
+                                            <p><?php the_excerpt(); ?></p>
                                         </div>
-                                        <?php
-                                    }
-                                } else {
-                                    echo '<p>No posts found.</p>';
+                                    </div>
+                                    <?php
                                 }
+                            } else {
+                                echo '<p>No posts found.</p>';
+                            }
 
-                                wp_reset_postdata();
-                            ?>
-                        </div>
+                            wp_reset_postdata();
+                        ?>
                     </div>
                 </div>
+            </div>
         </div>
 
 
         <!-- Testimonial -->
-        <?php
-        function create_testimonial_post_type() {
-            register_post_type('testimonial',
-                array(
-                    'labels'      => array(
-                        'name'          => __('Testimonials'),
-                        'singular_name' => __('Testimonial'),
-                    ),
-                    'public'      => true,
-                    'has_archive' => true,
-                    'supports'    => array('title', 'editor', 'thumbnail'),
-                )
-            );
-        }
-        add_action('init', 'create_testimonial_post_type');
-        ?>
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="testimonial-wrapper">
-            <button id="prevTestimonial" class="arrow left">
-                <img id="prevImage" src="" alt="Previous">
-                <span>&#8592;</span>
-            </button>
-            <div class="testimonial-content">
-                <div class="testimonial-slider">
-                    <?php
-                    $args = array(
-                        'post_type'      => 'testimonial',
-                        'posts_per_page' => -1,
-                        'post_status'    => 'publish',
-                        'order'          => 'DESC'
-                    );
-                    $query = new WP_Query($args);
-                    $testimonials = [];
-                    if ($query->have_posts()) :
-                        while ($query->have_posts()) : $query->the_post();
-                            $testimonials[] = array(
-                                'image' => get_the_post_thumbnail_url(get_the_ID(), 'medium'),
-                                'title' => get_the_title(),
-                                'content' => apply_filters('the_content', get_the_content()) // Fix content formatting
-                            );
-                        endwhile;
-                        wp_reset_postdata();
-                    endif;
-                    ?>
-                    <?php foreach ($testimonials as $index => $testimonial) : ?>
-                        <div class="testimonial-slide" data-index="<?php echo $index; ?>">
-                            <div class="testimonial-img">
-                                <img src="<?php echo esc_url($testimonial['image']); ?>" alt="<?php echo esc_attr($testimonial['title']); ?>">
-                            </div>
-                            <div class="testimonial-text">
-                                <p><?php echo wp_kses_post($testimonial['content']); ?></p>
-                                <h3><?php echo esc_html($testimonial['title']); ?></h3>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <button id="nextTestimonial" class="arrow right">
-                <img id="nextImage" src="" alt="Next">
-                <span>&#8594;</span>
-            </button>
-        </div>
-    </section>
+         <div class="test">
+
+             <div class="testimonial-title">
+                 <h1>Client's <br><span>Testimonial</span></h1>
+             </div>
+             <?php
+             function create_testimonial_post_type() {
+                 register_post_type('testimonial',
+                     array(
+                         'labels'      => array(
+                             'name'          => __('Testimonials'),
+                             'singular_name' => __('Testimonial'),
+                         ),
+                         'public'      => true,
+                         'has_archive' => true,
+                         'supports'    => array('title', 'editor', 'thumbnail'),
+                     )
+                 );
+             }
+             add_action('init', 'create_testimonial_post_type');
+             ?>
+         <!-- Testimonials Section -->
+             <section class="testimonials">
+                 <div class="testimonial-wrapper">
+                     <button id="prevTestimonial" class="arrow left">
+                         <img id="prevImage" src="" alt="Previous">
+                         <span>&#8592;</span>
+                     </button>
+                     <div class="testimonial-content">
+                         <div class="testimonial-slider">
+                             <?php
+                             $args = array(
+                                 'post_type'      => 'testimonial',
+                                 'posts_per_page' => -1,
+                                 'post_status'    => 'publish',
+                                 'order'          => 'DESC'
+                             );
+                             $query = new WP_Query($args);
+                             $testimonials = [];
+                             if ($query->have_posts()) :
+                                 while ($query->have_posts()) : $query->the_post();
+                                     $testimonials[] = array(
+                                         'image' => get_the_post_thumbnail_url(get_the_ID(), 'medium'),
+                                         'title' => get_the_title(),
+                                         'content' => apply_filters('the_content', get_the_content()) // Fix content formatting
+                                     );
+                                 endwhile;
+                                 wp_reset_postdata();
+                             endif;
+                             ?>
+                             <?php foreach ($testimonials as $index => $testimonial) : ?>
+                                 <div class="testimonial-slide" data-index="<?php echo $index; ?>">
+                                     <div class="testimonial-img">
+                                         <img src="<?php echo esc_url($testimonial['image']); ?>" alt="<?php echo esc_attr($testimonial['title']); ?>">
+                                     </div>
+                                     <div class="testimonial-text">
+                                         <p><?php echo wp_kses_post($testimonial['content']); ?></p>
+                                         <h3><?php echo esc_html($testimonial['title']); ?></h3>
+                                     </div>
+                                 </div>
+                             <?php endforeach; ?>
+                         </div>
+                     </div>
+                     <button id="nextTestimonial" class="arrow right">
+                         <img id="nextImage" src="" alt="Next">
+                         <span>&#8594;</span>
+                     </button>
+                 </div>
+             </section>
+         </div>
 
 
 <!-- Counter -->

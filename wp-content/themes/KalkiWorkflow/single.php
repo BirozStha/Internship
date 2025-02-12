@@ -19,8 +19,14 @@
 
             <!-- Back to Archive Button -->
             <div class="back-to-archive">
-                <a href="<?php echo get_category_link(get_cat_ID('our_service')); ?>" class="back-button">← Back to Services</a>
-
+                <?php 
+                $categories = get_the_category(); // Get categories of the current post
+                if (!empty($categories)) {
+                    $first_category = $categories[0]; // Get the first category
+                    $category_link = get_category_link($first_category->term_id); 
+                    ?>
+                    <a href="<?php echo esc_url($category_link); ?>" class="back-button">← Back to <?php echo esc_html($first_category->name); ?></a>
+                <?php } ?>
             </div>
 
     <?php

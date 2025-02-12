@@ -2,23 +2,17 @@
 function kalki_style() {
     // Enqueue jQuery
     wp_enqueue_script('jquery');
-
     // Enqueue custom CSS
     wp_enqueue_style('kalki_Automation', get_template_directory_uri() . '/assets/css/custom.css');
+    wp_enqueue_style('kalki_Automation_service', get_template_directory_uri() . '/assets/css/service.css');
+    wp_enqueue_style('kalki_Automation_blog', get_template_directory_uri() . '/assets/css/blog.css');
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', array(), null, 'all');
-
     // Enqueue Swiper CSS
     wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-
     // Enqueue Swiper JS
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array('jquery'), null, true);
-
-
-
     // Enqueue custom JS for the carousel
     wp_enqueue_script('custom-carousel-js', get_template_directory_uri() . '/assets/js/featured.js', array('swiper-js', 'jquery'), null, true);
-
-
     // Localize script to pass data from PHP to JS (if needed)
     wp_localize_script('custom-carousel-js', 'kalki_ajax', array(
         'ajax_url' => admin_url('admin-ajax.php'),
