@@ -6,6 +6,7 @@ function kalki_style() {
     wp_enqueue_style('kalki_Automation', get_template_directory_uri() . '/assets/css/custom.css');
     wp_enqueue_style('kalki_Automation_service', get_template_directory_uri() . '/assets/css/service.css');
     wp_enqueue_style('kalki_Automation_blog', get_template_directory_uri() . '/assets/css/blog.css');
+    wp_enqueue_style('kalki_Automation_single', get_template_directory_uri() . '/assets/css/single.css');
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', array(), null, 'all');
     // Enqueue Swiper CSS
     wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');

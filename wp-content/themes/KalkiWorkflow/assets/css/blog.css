@@ -44,6 +44,10 @@
     font-weight: 700;
     margin-bottom: 10px;
 }
+.blog-text h6{
+    font-weight: normal;
+    margin-bottom: 20px;
+}
 
 .blog-text p {
     font-size: 16px;

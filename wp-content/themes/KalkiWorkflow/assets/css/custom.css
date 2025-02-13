@@ -1154,64 +1154,6 @@
     }
 }
 
-
-
-/* for single.php */
-.single-post-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.single-post-title {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-.single-post-flex {
-    display: flex;
-    align-items: flex-start;
-    gap: 0; /* Adjust spacing between content and excerpt */
-}
-
-.single-post-body {
-    width: 40%;
-    height: 200px;
-}
-
-.single-post-excerpt {
-    width: 30%; /* Adjust width of excerpt */
-    padding: 10px;
-    border-left: 4px solid #000000; /* Blue left border */
-}
-
-
-.back-to-archive {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.back-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.back-button:hover {
-    background-color: #0056b3;
-}
-
-
 /* about us page */
 /* below */
 /* Main container */

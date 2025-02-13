@@ -1,0 +1,189 @@
+/* for single.php */
+/* General Styling for Single Post */
+.single-post-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center; /* Centers title and other text */
+}
+
+/* Title Centering */
+.post-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.post-service-title{
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Service Post Layout */
+.service-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Image Centering */
+.service-image {
+    width: 100%;
+    max-width: 600px; /* Limit image width */
+    margin-bottom: 20px;
+}
+
+.service-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Content Styling */
+.service-content {
+    width: 100%;
+    text-align: left; /* Align text to left */
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+
+
+/* Back Button */
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* for blog */
+
+/* Full-screen Blog Post Layout */
+.blog-post-container {
+    max-width: 1200px;
+    margin: auto;
+    /* margin-left: 250px;
+    margin-right: 150px; */
+    background: #fff;
+}
+
+/* Blog Title - Centered at the Top */
+.blog-single-title {
+    font-size: 80px;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 50px;
+    margin-top: 150px;
+}
+
+/* Author Meta - Centered Below Title */
+.blog-meta {
+    text-align: center;
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Featured Image - Full Width */
+.blog-featured-image {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.blog-featured-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Blog Content - Centered */
+.blog-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.8;
+    padding: 20px;
+}
+
+/* Related Articles Section */
+.related-articles {
+    text-align: left;
+    margin-bottom: 100px;
+
+}
+
+.related-articles h2 {
+    margin-bottom: 20px;
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 80px;
+
+}
+
+/* Related Articles Container */
+.related-articles-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Each Related Article Item */
+.related-article-item {
+    background: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.related-article-item h3 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.related-article-item a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.related-article-item a:hover {
+    text-decoration: underline;
+}
+
+.keep-reading{
+    color: #2E53FA;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.keep-reading::before {
+    content: "";
+    display: inline-block;
+    width: 3cm; /* Adjust line length */
+    height: 2px; /* Line thickness */
+    background-color: #2E53FA;
+    margin-right: 5px;
+    vertical-align: middle;
+}
