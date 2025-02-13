@@ -70,4 +70,44 @@ else :
 endif;
 ?>
 
+<!-- header ko matiko -->
+<div class="blog-after-pagination">
+    <div>
+        <h1>Get the latest<br>news into your inbox</h1>
+
+    </div>
+    <div>
+        <h5>
+            Stay informed and up-tp-date with the latest news
+            delivered straight to your inbox for a seamless and
+            convenient experience
+        </h5>
+    </div>
+</div>
+
+    <!-- form -->
+    <div class="form-style">
+        <?php
+            $args = array(
+                'post_type'      => 'post', 
+                'post_status'    => 'publish',
+                'name'      =>  'formblog',
+
+            );
+
+            $query = new WP_Query($args);
+
+            if ($query->have_posts()) {
+
+                while ($query->have_posts()) {
+                $query->the_post();
+                    echo the_content();
+                }
+
+            }
+        ?>
+        
+    </div>
+</div>
+
 <?php get_footer(); ?>

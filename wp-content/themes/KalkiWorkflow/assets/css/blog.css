@@ -101,3 +101,81 @@
     font-weight: bold;
 }
 
+.blog-after-pagination{
+    display: flex;
+    padding-left: 245px;
+    gap: 300px;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    padding-right: 300px;
+    background-color: #f5f5f5;
+}
+
+
+.blog-after-pagination h1{
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.blog-after-pagination h5{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+
+
+.form-style{
+    background-color: #f5f5f5;
+    padding-left: 900px;
+}
+
+
+.form-blog-row {
+    display: flex;
+    align-items: right;
+    gap: 15px;
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 700px; /* Adjust width as needed */
+}
+
+.form-blog-group {
+    flex: 1;
+}
+
+/* Styling the email input field */
+.form-blog-group.left input {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #000; /* Only bottom border */
+    font-size: 14px;
+    background: transparent;
+    outline: none;
+}
+
+/* Styling the submit button */
+.form-blog-group.right input[type="submit"] {
+    background: #2458f4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.form-blog-group.right input[type="submit"]:hover {
+    background: #1a4dc9;
+}
+
+/* Placeholder styling */
+.form-blog-group.left input::placeholder {
+    color: #555;
+    font-size: 14px;
+}
+
