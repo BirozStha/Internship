@@ -3,15 +3,15 @@
     font-size: 70px;
     font-weight: bold;
     margin-bottom: 10px;
-    margin-left: 220px;
+    margin-left: 245px;
     color: #333;
 }
 
 .blog-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 20px; /* Space between items */
-    max-width: 1200px; /* Adjust as needed */
+    gap: 30px; /* Space between items */
+    max-width: 1400px; /* Adjust as needed */
     margin: auto;
 }
 
@@ -72,3 +72,32 @@
         grid-template-columns: 1fr; /* Switch to 1 column for smaller screens */
     }
 }
+
+/* pagination */
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+    position: sticky;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 5px;
+    background: #fdfdfd;
+    color: #000000;
+    text-decoration: none;
+    border: #000000 1px solid;
+}
+
+.pagination a:hover {
+    background: #b0b1b3;
+}
+
+.pagination .current {
+    background: #333;
+    color: #f6f6f6;
+    font-weight: bold;
+}
+
