@@ -67,9 +67,9 @@ get_header();
                 <!-- Updated Category Section -->
                 <div class="service">
                     <div class="wp-block-media-text">
-                        <figure class="wp-block-media-text__media">
+                        <div class="wp-block-media-text__media">
                             <img src="<?php echo esc_url($category_image); ?>" alt="<?php echo esc_attr($category_name); ?>">
-                        </figure>
+                        </div>
                         <div class="wp-block-media-text__content">
                             <h1>
                                 <span style="color: black;"><?php echo $first_word; ?></span> 
@@ -133,6 +133,7 @@ get_header();
                     wp_reset_postdata();
                     ?>
         </div>
+                    
 
 
 

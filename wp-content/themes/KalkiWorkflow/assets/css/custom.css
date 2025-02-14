@@ -35,8 +35,8 @@
 .rectangle {
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.7); /* Solid black background */
-    padding: 20px 40px;
-    transform: skewX(-15deg); /* Tilt the rectangle */
+    padding: 20px 130px;
+    transform: skewX(-37deg); /* Tilt the rectangle */
     transform-origin: center;
     border: none;
     margin-bottom: 20px;
@@ -49,7 +49,7 @@
     color: white;
     margin: 0;
     font-size: 3rem;
-    transform: skewX(15deg); /* Counter-skew the text */
+    transform: skewX(37deg); /* Counter-skew the text */
     display: inline-block;
     line-height: 1.2;
     font-weight: normal;
@@ -72,8 +72,8 @@
     margin-top: 20px;
     position: absolute;
     bottom: -20px; /* Adjust to touch the bottom of the rectangle */
-    left: 50%;
-    transform: translateX(-50%) skewX(15deg); /* Center and skew the button */
+    left: 60%;
+    transform: translateX(-50%) skewX(37deg); /* Center and skew the button */
     
     text-align: center;
     border-radius: 5px; /* Optional: Add rounded corners */
@@ -141,7 +141,7 @@
 }
 
 .nav-menu a {
-    color: #fff;
+    color: white;
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
@@ -151,7 +151,7 @@
 }
 
 .nav-menu a:hover {
-    color: #F0F0F0;
+    color: #138f8c;
 }
 
 .container-achieve {
@@ -160,7 +160,7 @@
     align-items: center;
     min-height: 100%;
     /* text-align: center;       */
-    background-color: #F9F9F9;
+    background-color: white;
     margin: 0;
     padding: 50px;
 }
@@ -172,26 +172,29 @@
     /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  */
     margin: 0;
 }
+
 .serv{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100%;
+    min-height: 100vh;
     /* text-align: center;       */
-    background-color: #F9F9F9;
+    background-color: #F5f5f5;
     margin: 0;
     padding: 50px;
-    position: relative;
+    /* position: relative; */
+    /* flex-direction: column; */
 
 }
 .service{
     max-width: 1500px;
     width: 100%;
-    padding: 20px;
+    padding: 0px;
     /* background-color: #fff;  */
     /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  */
     margin-left: 0; /* Aligns the div to the left */
     margin-right: auto;
+
 
 }
 
@@ -207,12 +210,12 @@
     margin-right: auto;
 }
 
-.container-mata-service .wp-block-media-text {
+/* .container-mata-service .wp-block-media-text {
     display: flex;
-    flex-direction: row-reverse; /* Reverse the order so image is on the right */
-    align-items: center;
-    justify-content: flex-start;
-}
+    flex-direction: row-reverse; 
+    align-items: flex-start;
+    justify-content: space-between;
+} */
 
 .container-mata-service .wp-block-media-text__media img {
     border-radius: 50%; /* Make the image round */
@@ -220,11 +223,39 @@
     width: 200px;       /* Adjust the image size */
     height: 200px;      /* Maintains aspect ratio */
     position: relative;
+    padding-left: 0px;
+}
+
+/* .container-mata-service .wp-block-media-text__content {
+    flex: 1;
+    text-align: left;
+} */
+
+
+
+.container-mata-service .wp-block-media-text {
+    display: flex;
+    flex-direction: row-reverse; /* Keep image on the right */
+    align-items: flex-start;  /* Align everything to the top */
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .container-mata-service .wp-block-media-text__content {
-    padding-left: 20px;
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ensures text starts from the left */
+    justify-content: flex-start; /* Align content to the top */
+    gap: 15px; /* Adds spacing between elements */
+    padding-top: 0px; /* Ensures content is at the top */
+    margin-top: 0; /* Removes any extra margin */
 }
+
+
+
+
 
 .container-mata-service .wp-block-media-text__content h1 {
     font-size: 36px; /* Increase category name size */
@@ -232,7 +263,9 @@
 }
 
 .container-mata-service .wp-block-media-text__content p {
-    font-size: 18px; /* Increase category description size */
+    font-size: 18px;
+    padding-right:20px; 
+    margin-bottom: 20px;    
 }
 
 .view-all-button .button {
@@ -252,26 +285,25 @@
 }
 
 
-
-
-
-
 /* Circle Container - Move Circles Above the Image */
 .circle-container {
-    position: absolute;
+    position: relative;
     top: 30%;
     right: 15%; /* Adjusted to prevent cramping */
     transform: translateY(-50%);
-    width: 350px; /* Increased container size */
-    height: 300px;
-    position: relative;
-    z-index: 10; /* Ensures circles appear above the background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
 }
 
 /* Common Circle Styles */
 .circle {
-    width: 200px;  
-    height: 200px; 
+    width: 240px;  
+    height: 240px; 
     background-color: #fefefe; 
     color: rgb(0, 0, 0);
     border-radius: 50%;
@@ -290,8 +322,8 @@
 
 /* Positioning the Circles - Adjusted for Bigger Size */
 .circle-1 {
-    top: -10px; /* Moves it higher */
-    left: 60%;
+    top: 80px; /* Moves it higher */
+    left: 62%;
     transform: translateX(-50%);
 }
 
@@ -315,8 +347,8 @@
 
 
 .circle-4 {
-    bottom: -250px; /* Moves it lower */
-    left: 70%;
+    bottom: -283px; /* Moves it lower */
+    left: 62%;
     transform: translateX(-50%);
 }
 
@@ -367,8 +399,8 @@
 
 
 .circle-3 {
-    right: -200px; /* Moves it right */
-    top: 80%;
+    right: -226px; /* Moves it right */
+    top: 90%;
     transform: translateY(-50%);
 }
 
@@ -397,7 +429,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 50px;
-    background-color: #f9f9f9;
+    background-color: white;
+    
 }
 
 /* Left Text Section */
@@ -473,6 +506,8 @@
 .carousel-container {
     width: 60%;
     overflow: hidden;
+
+    
 }
 
 .swiper-slide {
@@ -487,10 +522,14 @@
     max-width: 350px;
     background: white;
     border-radius: 0px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    border: 1px solid #2d2b2b4c;
+    position: relative; /* Ensure positioning */
+    padding-bottom: 20px; /* Add spacing at bottom */
+
 }
 
 .post-item img {
@@ -504,6 +543,7 @@
     padding: 2px;
     text-align: center;
 }
+
 /* Testimonial */
 
 .testimonial-title {
