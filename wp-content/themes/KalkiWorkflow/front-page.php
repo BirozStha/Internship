@@ -8,10 +8,6 @@ get_header();
 <!-- <div id="primary" class="content-area"> -->
     <!-- <main id="main" class="site-main"> -->
 
-
-
-    
-
         <!-- achievement Content Below Banner -->
         <div class="container-achieve">
             <?php
@@ -135,8 +131,6 @@ get_header();
         </div>
                     
 
-
-
         <!-- featured project -->
         <div class="projects-carousel-section">
             <!-- Left Section -->
@@ -158,6 +152,7 @@ get_header();
                                 'post_type'      => 'post',
                                 'post_status'    => 'publish',
                                 'posts_per_page' => -1, // Fetch 3 posts
+                                'order' => 'ASC',
                                 'tax_query'      => array(
                                     array(
                                         'taxonomy' => 'category',
