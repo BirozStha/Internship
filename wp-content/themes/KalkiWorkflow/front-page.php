@@ -342,7 +342,6 @@ get_header();
 
 <section class="contact-section">
     <div class="contact-container">
-        <h2>Have an idea? <br><span style="color:blue;" >Tell us about it</span></h2>
         <?php
         $args = array(
             'post_type'      => 'post',
@@ -363,6 +362,7 @@ get_header();
         ?>
             <?php while ($new_page_query->have_posts()) : $new_page_query->the_post(); ?>
                 <div class="contact">
+                    <h2>Have an idea? <br><span style="color:blue;" >Tell us about it</span></h2>
                     <?php the_content(); ?>
                 </div>
             <?php endwhile;

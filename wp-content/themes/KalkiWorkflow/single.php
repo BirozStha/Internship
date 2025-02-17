@@ -2,7 +2,7 @@
 <?php
 // Get the categories of the current post
 $categories = get_the_category();
-$category_slug = !empty($categories) ? $categories[0]->slug : 'default';
+$category_slug = !empty($categories) ? $categories[0]->slug : 'uncategorized';
 ?>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <?php

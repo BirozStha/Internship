@@ -124,6 +124,25 @@
     padding: 0;
     /* margin-right: 20px; */
 }
+.logo ::after{
+    content: "";
+    top: -101px;
+    height: 200px;
+    left: 326px;
+    width: 75px;
+    background-color: rgba(46, 83, 250, 0.7);;
+    z-index: 999;
+    transform: skew(0deg);
+    position: absolute;
+}
+.bg{
+    background-color:white;
+    z-index: 998;
+    width: 400px;
+    height: 99px;
+    transform: skew(-37deg);
+
+}   
 
 .logo img {
     height: 100%; /* Make logo stretch to navbar height */
@@ -131,7 +150,12 @@
     width: auto;
     padding: 0;
     margin: 0;
-    object-fit: contain; /* Ensure it fits well */
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: skew(37deg);
+
 }
 
 /* Navigation menu list */
@@ -877,7 +901,7 @@
     justify-content: center;
     align-items: center;
     padding: 50px 0; /* Increased padding for top & bottom spacing */
-    margin-top: 50px; /* Adds extra space from the top */
+    margin-top: 0px; /* Adds extra space from the top */
     background-color: white; /* Set background color for the entire section */
     width: 100%; /* Ensures the section fills the width */
     box-sizing: border-box; /* Ensures padding doesn't affect width */
@@ -890,24 +914,24 @@
     width: 100%; /* Make the container fill the full width */
     max-width: 2000px; /* Increase max-width for a wider container */
     background: white; /* White background for the container */
-    padding: 40px;
+    padding: 0px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     text-align: center;
 }
 
-.contact-container h2{
+.contact h2{
     font-size: 80px;
-    margin-left: 800px;
+    margin-left: 850px;
     margin-bottom: 0;
 }
 
 /* Heading */
-.contact h2 {
+/* .contact h2 {
     font-size: 28px;
     color: #333;
     margin-bottom: 15px;
-}
+} */
 
 /* Paragraph/Text */
 .contact p {
@@ -1237,3 +1261,7 @@
     padding: 0px 0;
     display: block; /* Ensures full clickable area */
 }
+
+
+
+
