@@ -9,7 +9,7 @@
     height: 100vh; /* Full viewport height */
     overflow: hidden;
     position: relative;
-    background: rgba(60, 90, 251, 0.45);
+    /* background: rgba(60, 90, 251, 0.45); */
 }
 
 /* Banner image to cover the screen */
@@ -20,6 +20,16 @@
     object-fit: cover;
     z-index: -1;
 }
+
+/* .blue-line-image {
+    position: relative;
+    padding-top: 0px;
+    padding-bottom: 130;
+    width: 20%;
+    height: 20%;
+    object-fit: cover;
+    z-index: -1;
+} */
 
 /* Centered banner content */
 .banner-content {
@@ -82,6 +92,7 @@
 /* Fixed navigation menu at the bottom right */
 .main-nav {
     position: sticky;
+    top: 0;
     bottom: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -96,7 +107,6 @@
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     height: 99px; /* Adjust height as needed */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -725,11 +735,16 @@
   }
 
 .recent-posts {
-    margin-top: 50px;
-    max-width: 1200px;
-    margin: auto;
-    height: 470px;
-    padding: 100px 0;
+    max-width: 1900px;
+    width: 100%;
+    /* margin: auto; */
+    height: 800px;
+    /* padding: 100px 0; */
+    padding-left: 250px;
+    padding-right: 250px;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    background-color: #f5f5f5;
 
 
     /* background-color: white; */
@@ -744,7 +759,7 @@
 }
 
 .recent-posts-header h2 {
-    font-size: 32px;
+    font-size: 69px;
     font-weight: bold;
 }
 
@@ -793,7 +808,7 @@
 /* Image Styling */
 .post-image img {
     width: 100%;
-    height: 250px;
+    height: 260px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -809,7 +824,7 @@
     bottom: -40%; /* Moves it slightly up but avoids cutoff */
     left: 12%;
     width: 93%; /* Wider towards the right */
-    height: 130px; /* Increased height for better spacing */
+    height: 140px; /* Increased height for better spacing */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -863,7 +878,7 @@
     align-items: center;
     padding: 50px 0; /* Increased padding for top & bottom spacing */
     margin-top: 50px; /* Adds extra space from the top */
-    background-color: #F9F9F9; /* Set background color for the entire section */
+    background-color: white; /* Set background color for the entire section */
     width: 100%; /* Ensures the section fills the width */
     box-sizing: border-box; /* Ensures padding doesn't affect width */
     margin-bottom: 0;
@@ -1194,267 +1209,25 @@
     }
 }
 
-/* about us page */
-/* below */
-/* Main container */
-.about-us-container {
-    text-align: center;
-    /* padding: 40px 20px; */
-    /* margin: 0 auto; */
-    display: flex;
-    align-items: stretch;
-    gap: 0;
+
+
+/* Ensure the WordPress menu displays vertically */
+.nav-menu-footer {
+    list-style: none;
+    padding: 0;
     margin: 0;
-    padding: 0;
-}
-
-/* About content styling */
-.about-content {
-    max-width: 1200px;
-    margin: 0 auto 40px auto;
-    text-align: center;
-    padding: 0;
-}
-
-/* Page title styling */
-.about-content h1 {
-    font-size: 5em;
-    font-weight: bold;
-    margin-bottom: 90px;
-    margin-top: 90px;
-    color: #222;
-    text-align: left; /* Aligns the title to the left */
-}
-
-/* Paragraph styling */
-.about-content p {
-    font-size: 1.1em;
-    line-height: 1.5;
-    margin-bottom: 50px;
-    margin-left: 60px;
-    /* color: #333; */
-}
-
-/* List styling */
-.about-content ul {
-    list-style-type: disc;
-    margin: 20px auto;
-    padding-left: 40px;
-    max-width: 600px;
-    text-align: left;
-}
-
-
-.about-content ul li {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    /* color: #444; */
-}
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .about-content h1 {
-        font-size: 2em;
-        text-align: left; /* Ensures left alignment on mobile too */
-    }
-
-    .about-content p {
-        font-size: 1em;
-    }
-
-    .about-content ul {
-        padding-left: 20px;
-    }
-}
-
-.about-us-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-left: 60px;
-
-}
-
-
-.about-posts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    gap: 20px; /* Adjust the value as needed */
-    margin-bottom: 40px; /* Adjust the value as needed */
-    margin-left: 350px;
-    margin-right: 300px;
-    margin-top: 50px;
-    margin-bottom: 80px;
-}
-.about-post-item {
-    background: #F9F9F9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.about-post-item h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-.about-post-excerpt {
-    font-size: 16px;
-    color: #666;
-}
-
-.about-title {
-    text-align: left;
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    margin-left: 350px;
-}
-
-.about-title h1 {
-    font-size: 80px;
-    color: black;
-}
-
-.about-title h1 span {
-    color: blue;
-    font-size: 80px;
-    font-weight: bold;
-}
- 
-
-/* team */
-.team-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
-    width: 80%;
-    max-width: 1200px;
-    margin: auto;
+    flex-direction: column; /* Stack items vertically */
+    gap: 1px; /* Add spacing between items */
 }
 
-/* Layout: Image on Left, Text on Right */
-.team-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
+.nav-menu-footer li {
+    display: block; /* Ensure each item takes up full width */
 }
 
-.team-main {
-    flex: 1;
+.nav-menu-footer li a {
+    text-decoration: none;
+    color: white; /* Adjust to match your theme */
+    padding: 0px 0;
+    display: block; /* Ensures full clickable area */
 }
-
-.team-main img {
-    width: 400px;
-    height: 550px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.team-info {
-    flex: 1;
-}
-
-.team-info h2 {
-    font-weight: bold;
-    margin-top: 5px;
-    font-size: 40px;
-}
-
-.team-info h4 {
-    font-weight: normal;
-    margin-top: 10px;
-    font-size: 20px;
-}
-.team-info p {
-    font-weight: normal;
-    margin-top: 10px;
-    font-size: 20px;
-}
-
-.team-member-text {
-    display: none;
-}
-
-.team-member-text.active {
-    display: block;
-}
-
-/* Navigation Arrows */
-.team-controls {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-    margin-left: -465px;
-}
-
-
-.team-controls button {
-    background: rgb(253, 253, 253);
-    color: rgb(0, 0, 0);
-    border: 1px solid #000000;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px; 
-    display: flex;
-}
-
-button:hover {
-    background: #555;
-    border-color: #bbb;
-}
-
-.team-thumbnails {
-    display: flex;
-    flex-direction: row; /* Horizontal alignment */
-    justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
-    margin-left: 30px;
-}
-
-
-.team-thumb {
-    cursor: pointer;
-    border: 2px solid transparent;
-    padding: 5px;
-    transition: 0.3s;
-
-}
-
-.team-thumb.selected {
-    border: 2px solid blue;
-    border-radius: 5px;
-}
-
-.team-thumb img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-.team-member-large {
-    display: none; /* Hide all images initially */
-}
-
-.team-member-large.active {
-    display: block; /* Show only the active member */
-}
-
-
-.project-advice {
-    text-align: center; /* Center the text */
-    padding: 200px; /* Add padding around */
-    background-color: #f5f5f5;
-}
-
-.project-advice h1 {
-    font-size: 48px; /* Bigger size */
-    font-weight: bold; /* Make it bold */
-}
-

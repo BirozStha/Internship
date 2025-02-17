@@ -94,14 +94,36 @@ $category_slug = !empty($categories) ? $categories[0]->slug : 'default';
             </div>
 
       
-        <?php else : ?>
-            <!-- Default Post Layout -->
-            <article class="single-post-content default-layout">
-                <h1 class="post-title"><?php the_title(); ?></h1>
-                <div class="post-content"><?php the_content(); ?></div>
-            </article>
+            <?php else : ?>
+    <!-- Default Post Layout -->
+    <article class="default-single-post-content default-layout">
+        
+        <?php if (get_the_title()) : ?>
+            <h1 class="default-post-title"><?php the_title(); ?></h1>
         <?php endif; ?>
-    <?php endwhile; endif; ?>
+
+        <?php if (has_post_thumbnail()) : ?>
+            <div class="default-post-thumbnail">
+                <?php the_post_thumbnail('large'); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (has_excerpt()) : ?>
+            <div class="default-post-excerpt">
+                <?php the_excerpt(); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (get_the_content()) : ?>
+            <div class="default-post-content">
+                <?php the_content(); ?>
+            </div>
+        <?php endif; ?>
+
+    </article>
+<?php endif; ?>
+<?php endwhile; endif; ?>
+
 </div>
 <?php get_footer(); ?>
 

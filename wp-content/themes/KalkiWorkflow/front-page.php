@@ -289,7 +289,7 @@ get_header();
 <!-- recent post -->
 <section class="recent-posts">
     <div class="recent-posts-header">
-        <h2><span class="black">Recent</span> <span class="blue">Posts</span></h2>
+        <h2><span class="black">Recent</span> <br> <span class="blue">Posts</span></h2>
         <a class='view-all' href="<?php echo get_category_link(get_cat_ID('post')); ?>" class="button">VIEW ALL</a>
 
     </div>

@@ -1,0 +1,58 @@
+/* Container for Two Columns */
+.contact-page-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px; /* Prevents content from stretching too much */
+    margin: 0 auto;
+    padding: 100px 20px; /* Adjusted for better spacing */
+    gap: 50px;
+}
+
+/* Left Column - Contact Form */
+.contact-page {
+    width: 60%;
+}
+
+.contact-page h2 {
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+/* Right Column - Contact Info */
+.contact-info-box {
+    width: 35%;
+    background-color: #000;
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Added shadow */
+    text-align: left;
+}
+
+.contact-info-box h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contact-info-box p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.contact-details i {
+    margin-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-page-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-page, .contact-info-box {
+        width: 100%;
+    }
+}

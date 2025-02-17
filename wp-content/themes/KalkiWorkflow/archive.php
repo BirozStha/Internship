@@ -23,6 +23,11 @@
                         <div class="archive-service-content">
                             <?php echo get_the_content();?>
                             <h2 class="archive-service-title"><?php the_title(); ?></h2>
+                            <?php if (has_post_thumbnail()) : ?>
+                                <div class="default-post-thumbnail">
+                                    <?php the_post_thumbnail('large'); ?>
+                                </div>
+                            <?php endif; ?>
                             <p class="archive-service-excerpt"><?php the_excerpt(); ?></p>
                         </div>
                     </a>

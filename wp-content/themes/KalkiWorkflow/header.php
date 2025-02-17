@@ -12,6 +12,7 @@
         <section class="banner-section">
             <?php
             $banner_image = get_template_directory_uri() . '/assets/img/banner.png';
+            // $blue_line1 = get_template_directory_uri() . '/assets/img/bl1.png';
             ?>
             <img src="<?php echo esc_url($banner_image); ?>" alt="Banner Image" class="banner-image">
             <div class="banner-content">
@@ -30,13 +31,15 @@
     <!-- Navigation Menu (Visible on All Pages) -->
     <nav class="main-nav">
         <div class="nav-container">
+            
             <div class="logo">
                 <?php
                 if (function_exists('the_custom_logo')) {
                     the_custom_logo();
                 }
                 ?>
-            </div>
+
+</div>
             <?php
             // Display the navigation menu
             wp_nav_menu(array(

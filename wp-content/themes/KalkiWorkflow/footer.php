@@ -6,14 +6,22 @@
 
         <div class="footer-links">
             <h4>About</h4>
-            <ul>
+            <?php
+            
+            wp_nav_menu(array(
+                'menu' => 'kalki_menu',
+                'menu_class' => 'nav-menu-footer',
+                'container'  => false // Avoid extra divs
+            ));
+            ?>
+            <!-- <ul>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">How It Works</a></li>
                 <li><a href="#">What We Do</a></li>
                 <li><a href="#">Contact Us</a></li>
                 <li><a href="#">Careers</a></li>
                 <li><a href="#">FAQs</a></li>
-            </ul>
+            </ul> -->
         </div>
 
         <div class="footer-connect">
