@@ -342,6 +342,7 @@ get_header();
 
 <section class="contact-section">
     <div class="contact-container">
+        <h2>Have an idea? <br><span style="color:blue;" >Tell us about it</span></h2>
         <?php
         $args = array(
             'post_type'      => 'post',
@@ -373,5 +374,5 @@ get_header();
 </section>
 
 <?php
-get_footer(); // Load the footer template
+get_footer(); 
 ?>

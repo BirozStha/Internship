@@ -896,6 +896,12 @@
     text-align: center;
 }
 
+.contact-container h2{
+    font-size: 80px;
+    margin-left: 800px;
+    margin-bottom: 0;
+}
+
 /* Heading */
 .contact h2 {
     font-size: 28px;

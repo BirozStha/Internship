@@ -15,8 +15,9 @@
 }
 
 .contact-page h2 {
-    font-size: 50px;
+    font-size: 70px;
     font-weight: bolder;
+    margin-bottom: 20PX;
 }
 
 /* Right Column - Contact Info */
@@ -28,6 +29,7 @@
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Added shadow */
     text-align: left;
+    height: 400px;
 }
 
 .contact-info-box h3 {
@@ -43,6 +45,10 @@
 
 .contact-details i {
     margin-right: 10px;
+}
+.contact-details p{
+    margin-bottom:30px;
+    margin-top: 20px;
 }
 
 /* Responsive Design */
