@@ -854,6 +854,9 @@
     flex-direction: column;
     justify-content: center;
 }
+.post-info:hover{
+    background-color: #3498db;
+}
 
 
 /* Title Styling */

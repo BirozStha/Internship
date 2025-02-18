@@ -3,7 +3,7 @@
     font-size: 70px;
     font-weight: bold;
     margin-bottom: 10px;
-    margin-left: 245px;
+    margin-left: 260px;
     color: #333;
 }
 
@@ -12,7 +12,8 @@
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
     gap: 30px; /* Space between items */
     max-width: 1400px; /* Adjust as needed */
-    margin: auto;
+    margin-left:260px ;
+    margin-right: 260px;
 }
 
 .blog-item {

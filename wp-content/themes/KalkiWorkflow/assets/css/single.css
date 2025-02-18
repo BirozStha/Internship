@@ -80,10 +80,13 @@
 /* Full-screen Blog Post Layout */
 .blog-post-container {
     max-width: 1200px;
-    margin: auto;
-    /* margin-left: 250px;
-    margin-right: 150px; */
+    margin-left: 260px;
+    margin-right: 260px;
     background: #fff;
+}
+
+.blog-post-container h1{
+    font-size: 60px;
 }
 
 /* Blog Title - Centered at the Top */

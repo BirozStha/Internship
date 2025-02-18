@@ -6,7 +6,7 @@ get_header();
 ?>
 
 <section class="contact-page-section">
-<h1 style="font-size: 100px; margin-bottom:50px; margin-left:350px;"><?php echo get_the_title(); ?></h1>
+<h1 style="font-size: 100px; margin-bottom:50px; margin-left:180px;"><?php echo get_the_title(); ?></h1>
 
     <div class="contact-page-container">
         
