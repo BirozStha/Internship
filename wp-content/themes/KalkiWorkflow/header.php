@@ -7,7 +7,7 @@
     <?php wp_head(); ?>
 </head>
 <body>
-<?php if (is_front_page() || is_home()) : ?>
+<?php if (is_front_page()) : ?>
         <!-- Banner Section (Only for Front Page) -->
         <section class="banner-section">
             <?php
