@@ -1,0 +1,138 @@
+.booking-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 100px auto -5px;
+  }
+  .booking-image {
+    width: 30%;
+    background-color: red;
+  }
+  .booking-image img {
+    height: 100vh;
+  }
+  .app-container {
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 100px;
+  }
+  /* Appointment Container */
+  .app-content {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+  }
+  /* Form Styling */
+  .app-form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+  }
+  .app-form label {
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: left;
+  }
+  .app-form input,
+  .app-form select {
+    max-width: 400px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  /* Submit Button */
+  .app-form input[type="submit"] {
+    background: #007BFF;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  .app-form input[type="submit"]:hover {
+    background: #0056B3;
+  }
+  /* Responsive */
+  @media (max-width: 500px) {
+    .app-container {
+      width: 90%;
+    }
+  }
+  /* Center the confirmation container */
+  .app-con {
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin: 150px auto;
+  }
+  /* Heading Style */
+  .app-con h2 {
+    color: #28A745;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  /* Paragraph Style */
+  .app-con p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  /* Back to Home Button */
+  .app-con a {
+    display: inline-block;
+    text-decoration: none;
+    background: #007BFF;
+    color: #FFFFFF;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  .app-con a:hover {
+    background: #0056B3;
+  }
+  /* Responsive */
+  @media (max-width: 500px) {
+    .app-con {
+      width: 90%;
+      padding: 20px;
+    }
+    .app-con h2 {
+      font-size: 22px;
+    }
+    .app-con p {
+      font-size: 16px;
+    }
+    .app-con a {
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+  }

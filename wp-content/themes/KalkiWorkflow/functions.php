@@ -10,6 +10,7 @@ function kalki_style() {
     wp_enqueue_style('kalki_Automation_contact', get_template_directory_uri() . '/assets/css/contact.css');
     wp_enqueue_style('kalki_Automation_about', get_template_directory_uri() . '/assets/css/about.css');
     wp_enqueue_style('kalki_Automation_banner', get_template_directory_uri() . '/assets/css/banner.css');
+    wp_enqueue_style('kalki_Automation_booking', get_template_directory_uri() . '/assets/css/booking.css');
     //font aswome declear garea ko
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', array(), null, 'all');
     // Enqueue Swiper CSS
