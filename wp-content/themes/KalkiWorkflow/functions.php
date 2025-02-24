@@ -80,4 +80,7 @@ function zGetAttachmentIdByUrl($image_src) {
     $id = $wpdb->get_var($query);
     return (!empty($id)) ? $id : NULL;
 }
+
+
+
 ?>

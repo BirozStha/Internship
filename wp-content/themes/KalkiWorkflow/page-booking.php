@@ -4,11 +4,10 @@ get_header();
 ?>
 <div class="booking-section">
     <div class="booking-image">
-        <h2 style="margin:100px;">Book an Appointment</h2>
+        <h2 >Book an Appointment</h2>
         <img src="<?php the_post_thumbnail_url('large')?>" alt="">
     </div>
     <div class="app-container">
-    
         <div class="app-content">
             <form class="app-form" method="post" action="">
                 <label for="name">Full Name:</label>
@@ -30,8 +29,6 @@ get_header();
                 <input type="submit" name="submit_booking" value="Book Now">
             </form>
         </div>
-    </div>   
+    </div>
 </div>
-
-
 <?php get_footer(); ?>
