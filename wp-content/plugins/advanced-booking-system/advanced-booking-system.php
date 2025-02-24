@@ -1,28 +1,21 @@
 <?php
 /**
- * Plugin Name: AppBokin
- * Plugin URI: https://wordpress.test/plugins/appbokin/
+ * Plugin Name: advanced-booking-system
+ * Plugin URI: https://wordpress.test/plugins/advanced-booking-system/
  * Description: A custom WordPress plugin for managing appointments.
  * Version: 1.0
  * Author: Your Name
- * Author URI: https://wordpress.test/plugins/appbokin/
+ * Author URI: https://wordpress.test/plugins/advanced-booking-system/
  * License: GPL2
  */
 
-?>
-<?php 
-function appbokin_enqueue_assets() {
-    wp_enqueue_style('appbokin-style', plugins_url('assets/css/appbokin.css', __FILE__));
-}
-add_action('admin_enqueue_scripts', 'appbokin_enqueue_assets');
 
-?>
-<?php
+
 if (!defined('ABSPATH')) {
     exit;
 }
 
-class AppBokin {
+class bookingsystem {
     private static $instance = null;
     private $table_name;
 
@@ -37,6 +30,7 @@ class AppBokin {
         add_action('admin_init', [$this, 'handle_admin_booking_submission']);
         add_action('admin_post_edit_appointment', [$this, 'handle_admin_booking_submission']);
         add_action('admin_init', [$this, 'register_ajax_handler']);
+
     }
 
     // Singleton pattern
@@ -128,26 +122,22 @@ class AppBokin {
             'Add Appointment',
             'manage_options',
             'add_appointment',
-            'manage_options',
-            'add_appointment',
             [$this, 'show_add_appointment_form']
         );
     }
+    
 
     // Show Appointments and handle Edit request
     public function show_bookings() {
         // If an edit is requested, show the edit form
         if (isset($_GET['edit'])) {
             $this->show_edit_appointment_form(intval($_GET['edit']));
-            return;
+            return; // Stop further processing so only the edit form is shown.
         }
-        
         // Send Email Logic in Admin Panel
         if (isset($_GET['send_email'])) {
             $this->send_email_notification(intval($_GET['send_email']));
-            return;
         }
-
 
 
         global $wpdb;
@@ -275,12 +265,14 @@ class AppBokin {
     public function show_edit_appointment_form($appointment_id) {
         global $wpdb;
         $appointment = $wpdb->get_row($wpdb->prepare("SELECT * FROM $this->table_name WHERE id = %d", $appointment_id));
+        
         if (!$appointment) {
             echo "<div class='error'><p>Appointment not found.</p></div>";
             return;
         }
 
         echo "<div class='wrap'><h1>Edit Appointment</h1>";
+        
         if (isset($_POST['submit_edit_appointment'])) {
             // Verify nonce for security
             if (!isset($_POST['edit_appointment_nonce']) || !wp_verify_nonce($_POST['edit_appointment_nonce'], 'edit_appointment_action')) {
@@ -314,6 +306,8 @@ class AppBokin {
             wp_redirect(admin_url('admin.php?page=booking_system&updated=true'));
             exit;
         }
+      
+        
 
       // Edit Appointment Form
         echo "<form method='post' action=''>";
@@ -441,44 +435,39 @@ class AppBokin {
     // Send Booking Email
     private function send_booking_email($name, $email, $date, $time, $service, $status) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            error_log("Invalid email address: $email");
-            return false;
+            return;
         }
 
         $subject = "Appointment Notification";
         $message = "Dear $name,\n\nYour appointment details:\n\n";
         $message .= "Service: $service\nDate: $date\nTime: $time\nStatus: $status\n\nThank you!";
 
-        $headers = array('Content-Type: text/plain; charset=UTF-8');
-        $sent = wp_mail($email, $subject, $message, $headers);
-        
-        if (!$sent) {
-            error_log("Failed to send email to: $email");
-        }
-        return $sent;
+        wp_mail($email, $subject, $message);
     }
-
     public function send_email_notification($appointment_id) {
         global $wpdb;
         $appointment = $wpdb->get_row($wpdb->prepare("SELECT * FROM $this->table_name WHERE id = %d", $appointment_id));
     
         if ($appointment) {
-            $email_sent = $this->send_booking_email($appointment->name, $appointment->email, $appointment->date, $appointment->time, $appointment->service, $appointment->status);
-            if ($email_sent) {
-                wp_redirect(admin_url('admin.php?page=booking_system&email_sent=true'));
-                exit;
-            } else {
-                wp_redirect(admin_url('admin.php?page=booking_system&email_error=true'));
-                exit;
-            }
-        } else {
-            wp_redirect(admin_url('admin.php?page=booking_system&error=not_found'));
+            // Send the email
+            $this->send_booking_email(
+                $appointment->name, 
+                $appointment->email, 
+                $appointment->date, 
+                $appointment->time, 
+                $appointment->service, 
+                $appointment->status
+            );
+    
+            // Display a JavaScript alert and redirect back to the Appointments page
+            echo "<script>
+                    alert('Email Sent Successfully!');
+                    window.location.href='" . admin_url('admin.php?page=booking_system') . "';
+                  </script>";
             exit;
         }
     }
-
-
-
+    
     // Send Admin Notification
     private function send_admin_notification($name, $email, $date, $time, $service, $status) {
         $admin_email = get_option('admin_email');
@@ -491,4 +480,4 @@ class AppBokin {
 }
 
 // Initialize the plugin
-AppBokin::get_instance(); //this code has error where edit and send mail doesnt work in admin panel
+bookingsystem::get_instance(); //this code has error where edit and send mail doesnt work in admin panel

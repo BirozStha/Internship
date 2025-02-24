@@ -1,12 +1,10 @@
 <?php
-/* Template Name: Booking Confirmation */
-?>
-<?php
+/* Template Name: Confirmation Page */
 get_header();
 ?>
-<div class="app-con">
-    <h2>Booking Confirmed!</h2>
-    <p>Thank you! Your appointment has been scheduled. We'll contact you soon.</p>
-    <a href="<?php echo site_url('/'); ?>">Back to Home</a>
-</div>
-<?php get_footer(); ?>
+<section class="confirmation-container">
+    <h2 class="confirmation-title">Booking Confirmed!</h2>
+    <p class="confirmation-message">Thank you! Your appointment has been scheduled. We'll contact you soon.</p>
+    <a class="home-link" href="<?php echo site_url(); ?>">Back to Home</a>
+</section>
+<?php get_footer(); ?>  
