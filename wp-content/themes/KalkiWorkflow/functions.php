@@ -82,5 +82,79 @@ function zGetAttachmentIdByUrl($image_src) {
 }
 
 
+// cpt for appointment
+
+function register_appointment_cpt() {
+    $labels = [
+        'name'          => 'Appointments',
+        'singular_name' => 'Appointment',
+        'menu_name'     => 'Appointments',
+        'add_new'       => 'Add Appointment',
+        'add_new_item'  => 'Add New Appointment',
+        'edit_item'     => 'Edit Appointment',
+        'new_item'      => 'New Appointment',
+        'view_item'     => 'View Appointment',
+        'all_items'     => 'All Appointments'
+    ];
+    $args = [
+        'labels'       => $labels,
+        'public'       => true,
+        'has_archive'  => true,
+        'show_ui'      => true,
+        'menu_icon'    => 'dashicons-calendar-alt',
+        'supports'     => ['title', 'editor', 'custom-fields'],
+        'rewrite'      => ['slug' => 'appointments'],
+    ];
+    register_post_type('appointment', $args);
+}
+add_action('init', 'register_appointment_cpt');
+function sync_appointments_to_cpt() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'appointments';
+    $appointments = $wpdb->get_results("SELECT * FROM $table_name");
+    foreach ($appointments as $appointment) {
+        // Check if an existing post for this appointment exists
+        $existing_post = get_posts([
+            'post_type'  => 'appointment',
+            'meta_key'   => '_appointment_id',
+            'meta_value' => $appointment->id,
+            'numberposts'=> 1
+        ]);
+        if (!$existing_post) {
+            // Insert new appointment post
+            $post_id = wp_insert_post([
+                'post_title'   => sanitize_text_field($appointment->name . ' - ' . $appointment->date),
+                'post_content' => 'Service: ' . esc_html($appointment->service) . '<br>Email: ' . esc_html($appointment->email),
+                'post_status'  => 'publish',
+                'post_type'    => 'appointment',
+            ]);
+            if ($post_id) {
+                update_post_meta($post_id, '_appointment_id', $appointment->id);
+                update_post_meta($post_id, '_appointment_date', $appointment->date);
+                update_post_meta($post_id, '_appointment_time', $appointment->time);
+                update_post_meta($post_id, '_appointment_service', $appointment->service);
+                update_post_meta($post_id, '_appointment_status', $appointment->status);
+            }
+        }
+    }
+}
+add_action('init', 'sync_appointments_to_cpt');
+// Handle Form Submission and Store Data
+function add_appointment_meta_boxes() {
+    add_meta_box('appointment_details', 'Appointment Details', 'render_appointment_meta_box', 'appointment', 'normal', 'high');
+}
+add_action('add_meta_boxes', 'add_appointment_meta_boxes');
+function render_appointment_meta_box($post) {
+    $date    = get_post_meta($post->ID, '_appointment_date', true);
+    $time    = get_post_meta($post->ID, '_appointment_time', true);
+    $service = get_post_meta($post->ID, '_appointment_service', true);
+    $status  = get_post_meta($post->ID, '_appointment_status', true);
+    echo "<p><strong>Date:</strong> $date</p>";
+    echo "<p><strong>Time:</strong> $time</p>";
+    echo "<p><strong>Service:</strong> $service</p>";
+    echo "<p><strong>Status:</strong> $status</p>";
+}
+
+
 
 ?>
