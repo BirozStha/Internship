@@ -1,4 +1,4 @@
-booking-container {
+.booking-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,7 +6,9 @@ booking-container {
   max-width: 1000px;
   margin: 50px auto;
   padding: 20px;
+  height: auto; /* Adjust to fit content */
 }
+
 /* Image Section */
 .booking-image-section {
   flex: 1;
@@ -14,9 +16,22 @@ booking-container {
 }
 .booking-image-section img {
   width: 100%;
-  max-width: 450px;
+  max-width: none; /* Remove max-width restriction */
+  height: 100%; /* Ensures it scales evenly */
+  object-fit: cover; /* Maintains aspect ratio */
+  /* max-width: 450px; */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.booking-image-section h1{
+  font-size: 60px;
+  font-weight: 600;
+}
+
+/* Ensure form and image take equal space */
+.booking-image-section, .booking-form {
+  flex: 1;
+  height: 100%;
 }
 /* Form Section */
 .booking-form {
@@ -59,19 +74,23 @@ booking-container {
   border-color: #007BFF;
   outline: none;
 }
+
 /* Submit Button */
-.booking-form input[type=“submit”] {
-  background: #007BFF;
+.booking-form input[type="submit"] {
+  background: #007BFF; /* Blue */
   color: #fff;
   font-size: 18px;
   border: none;
   cursor: pointer;
   padding: 12px;
+  border-radius: 5px;
   transition: background 0.3s ease;
 }
-.booking-form input[type=“submit”]:hover {
-  background: #0056B3;
+
+.booking-form input[type="submit"]:hover {
+  background: #66B2FF; /* Light Blue */
 }
+
 /* Responsive Design for Mobile */
 @media (max-width: 800px) {
   .booking-container {
@@ -80,11 +99,15 @@ booking-container {
   }
   .booking-image-section img {
       max-width: 300px;
+      height: auto; /* Keep aspect ratio */
   }
 }
+
+
+/* ----------------conformation----------------- */
 /* Overall Body Styling with Animated Background */
 body {
-  font-family: ‘Arial’, sans-serif;
+  font-family: 'Arial', sans-serif;
   background: linear-gradient(270deg, #F5F5F5, #F5F5F5);
   background-size: 400% 400%;
   animation: backgroundAnimation 6s infinite alternate;
@@ -151,11 +174,11 @@ body {
   animation: pulse 1.5s infinite;
 }
 /* Pulsating Button Animation */
-@keyframes pulse {
+/* @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
-}
+} */
 /* Hover Effect for Home Link */
 .home-link:hover {
   background-color: #0056B3;
@@ -185,4 +208,8 @@ body {
       padding: 12px 25px;
       font-size: 0.9rem;
   }
+}
+
+.a-btn{
+  display: flex;
 }
