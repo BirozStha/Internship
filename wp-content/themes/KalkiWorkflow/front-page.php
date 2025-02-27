@@ -36,7 +36,6 @@ get_header();
             ?>
         </div>
 
-
         <!-- serviceContent Below Banner -->
         <div class="container-mata-service serv">
             <?php
@@ -128,8 +127,7 @@ get_header();
                     // Restore original Post Data
                     wp_reset_postdata();
                     ?>
-        </div>
-                    
+        </div>             
 
         <!-- featured project -->
         <div class="projects-carousel-section">
@@ -195,7 +193,6 @@ get_header();
                 </div>
             </div>
         </div>
-
 
         <!-- Testimonial -->
          <div class="test">
@@ -269,54 +266,7 @@ get_header();
              </section>
          </div>
 
-
         <!-- Counter -->
-        <section class="counter-section">
-            <div class="counter-box">
-                <h2>400 <span class="blue">+</span></h2>
-                <p>Projects Completed</p>
-            </div>
-            <div class="counter-box">
-                <h2>150 <span class="blue">m</span></h2>
-                <p>Hours Coding</p>
-            </div>
-            <div class="counter-box">
-                <h2>700 <span class="blue">+</span></h2>
-                <p>Happy Clients</p>
-            </div>
-        </section>
-
-        <section class="counter-section">
-            <div class="counter-box">
-                <h2>
-                    <?php
-                    $projects_completed = get_post_meta(get_the_ID(), '_projects_completed', true);
-                    echo !empty($projects_completed) ? $projects_completed . ' <span class="blue">+</span>' : '0 <span class="blue">+</span>';
-                    ?>
-                </h2>
-                <p>Projects Completed</p>
-            </div>
-            <div class="counter-box">
-                <h2>
-                    <?php
-                    $hours_coding = get_post_meta(get_the_ID(), '_hours_coding', true);
-                    echo !empty($hours_coding) ? $hours_coding . ' <span class="blue">m</span>' : '0 <span class="blue">m</span>';
-                    ?>
-                </h2>
-                <p>Hours Coding</p>
-            </div>
-            <div class="counter-box">
-                <h2>
-                    <?php
-  
-                    $happy_clients = get_post_meta(get_the_ID(), '_happy_clients', true);
-                    echo !empty($happy_clients) ? $happy_clients . ' <span class="blue">+</span>' : '0 <span class="blue">+</span>';
-                    ?>
-                </h2>
-                <p>Happy Clients</p>
-            </div>
-        </section>
-
         <section class="counter-section">
             <div class="counter-box">
                 <h2 id="projects_completed">
@@ -346,8 +296,6 @@ get_header();
                 <p>Happy Clients</p>
             </div>
         </section>
-
-
 
         <!-- recent post -->
         <section class="recent-posts">
