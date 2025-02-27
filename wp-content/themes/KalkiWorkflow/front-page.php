@@ -317,6 +317,37 @@ get_header();
             </div>
         </section>
 
+        <section class="counter-section">
+            <div class="counter-box">
+                <h2 id="projects_completed">
+                    <?php
+                    $projects_completed = get_post_meta(135, '_projects_completed', true);
+                    echo !empty($projects_completed) ? $projects_completed . ' <span class="blue">+</span>' : '400 <span class="blue">+</span>';
+                    ?>
+                </h2>
+                <p>Projects Completed</p>
+            </div>
+            <div class="counter-box">
+                <h2 id="hours_coding">
+                    <?php
+                    $hours_coding = get_post_meta(135, '_hours_coding', true);
+                    echo !empty($hours_coding) ? $hours_coding . ' <span class="blue">m</span>' : '150 <span class="blue">m</span>';
+                    ?>
+                </h2>
+                <p>Hours Coding</p>
+            </div>
+            <div class="counter-box">
+                <h2 id="happy_clients">
+                    <?php
+                    $happy_clients = get_post_meta(135, '_happy_clients', true);
+                    echo !empty($happy_clients) ? $happy_clients . ' <span class="blue">+</span>' : '700 <span class="blue">+</span>';
+                    ?>
+                </h2>
+                <p>Happy Clients</p>
+            </div>
+        </section>
+
+
 
         <!-- recent post -->
         <section class="recent-posts">

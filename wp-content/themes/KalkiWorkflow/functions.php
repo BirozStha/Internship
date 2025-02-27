@@ -388,14 +388,6 @@ function save_counter_meta_box_data($post_id) {
 add_action('save_post', 'save_counter_meta_box_data');
 
 
-
-
-
-
-
-
-
-
 //Ajax for Counter Using Meta Box
 function get_updated_counter_values() {
     $post_id = 135; // Fixed homepage ID
@@ -409,10 +401,16 @@ function get_updated_counter_values() {
     wp_send_json($response);
 }
 add_action('wp_ajax_get_counter_values', 'get_updated_counter_values');
-add_action('wp_ajax_nopriv_get_counter_values', 'get_updated_counter_values'); // Allow for non-logged-in users
+add_action('wp_ajax_nopriv_get_counter_values', 'get_updated_counter_values'); // For non-logged-in users
 
 function enqueue_counter_script() {
     wp_enqueue_script('counter-update', get_template_directory_uri() . '/assets/js/counter-update.js', ['jquery'], null, true);
+
+    // Localize script to pass AJAX URL
+    wp_localize_script('counter-update', 'counterAjax', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+    ]);
 }
 add_action('wp_enqueue_scripts', 'enqueue_counter_script');
+
 
