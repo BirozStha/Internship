@@ -286,6 +286,38 @@ get_header();
             </div>
         </section>
 
+        <section class="counter-section">
+            <div class="counter-box">
+                <h2>
+                    <?php
+                    $projects_completed = get_post_meta(get_the_ID(), '_projects_completed', true);
+                    echo !empty($projects_completed) ? $projects_completed . ' <span class="blue">+</span>' : '0 <span class="blue">+</span>';
+                    ?>
+                </h2>
+                <p>Projects Completed</p>
+            </div>
+            <div class="counter-box">
+                <h2>
+                    <?php
+                    $hours_coding = get_post_meta(get_the_ID(), '_hours_coding', true);
+                    echo !empty($hours_coding) ? $hours_coding . ' <span class="blue">m</span>' : '0 <span class="blue">m</span>';
+                    ?>
+                </h2>
+                <p>Hours Coding</p>
+            </div>
+            <div class="counter-box">
+                <h2>
+                    <?php
+  
+                    $happy_clients = get_post_meta(get_the_ID(), '_happy_clients', true);
+                    echo !empty($happy_clients) ? $happy_clients . ' <span class="blue">+</span>' : '0 <span class="blue">+</span>';
+                    ?>
+                </h2>
+                <p>Happy Clients</p>
+            </div>
+        </section>
+
+
         <!-- recent post -->
         <section class="recent-posts">
             <div class="recent-posts-header">

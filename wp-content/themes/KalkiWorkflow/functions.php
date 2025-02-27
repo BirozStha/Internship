@@ -338,3 +338,81 @@ add_action('wp_ajax_send_appointment_email', 'send_appointment_email_ajax');
 
 
 //for the counter using meta box
+// Add meta box for counter values
+function add_counter_meta_box() {
+    add_meta_box(
+        'counter_meta_box', // ID of the meta box
+        'Counter Values', // Title of the meta box
+        'render_counter_meta_box', // Callback function to display the fields
+        'page', // Post type (you can change this to other post types like 'post' or a custom post type)
+        'normal', // Context (normal, side, etc.)
+        'high' // Priority (high, low, etc.)
+    );
+}
+add_action('add_meta_boxes', 'add_counter_meta_box');
+
+// Render the meta box fields
+function render_counter_meta_box($post) {
+    // Get current values (if any)
+    $projects_completed = get_post_meta($post->ID, '_projects_completed', true);
+    $hours_coding = get_post_meta($post->ID, '_hours_coding', true);
+    $happy_clients = get_post_meta($post->ID, '_happy_clients', true);
+
+    ?>
+    <label for="projects_completed"><strong>Projects Completed:</strong></label>
+    <input type="number" id="projects_completed" name="projects_completed" value="<?php echo esc_attr($projects_completed); ?>" style="width:100%;" />
+    <br><br>
+    
+    <label for="hours_coding"><strong>Hours Coding:</strong></label>
+    <input type="number" id="hours_coding" name="hours_coding" value="<?php echo esc_attr($hours_coding); ?>" style="width:100%;" />
+    <br><br>
+    
+    <label for="happy_clients"><strong>Happy Clients:</strong></label>
+    <input type="number" id="happy_clients" name="happy_clients" value="<?php echo esc_attr($happy_clients); ?>" style="width:100%;" />
+    <?php
+}
+
+// Save the meta box data
+function save_counter_meta_box_data($post_id) {
+    // Check if the fields are set and save the data
+    if (isset($_POST['projects_completed'])) {
+        update_post_meta($post_id, '_projects_completed', sanitize_text_field($_POST['projects_completed']));
+    }
+    if (isset($_POST['hours_coding'])) {
+        update_post_meta($post_id, '_hours_coding', sanitize_text_field($_POST['hours_coding']));
+    }
+    if (isset($_POST['happy_clients'])) {
+        update_post_meta($post_id, '_happy_clients', sanitize_text_field($_POST['happy_clients']));
+    }
+}
+add_action('save_post', 'save_counter_meta_box_data');
+
+
+
+
+
+
+
+
+
+
+//Ajax for Counter Using Meta Box
+function get_updated_counter_values() {
+    $post_id = 135; // Fixed homepage ID
+
+    $response = [
+        'projects_completed' => get_post_meta($post_id, '_projects_completed', true) ?: '400',
+        'hours_coding' => get_post_meta($post_id, '_hours_coding', true) ?: '150',
+        'happy_clients' => get_post_meta($post_id, '_happy_clients', true) ?: '700',
+    ];
+
+    wp_send_json($response);
+}
+add_action('wp_ajax_get_counter_values', 'get_updated_counter_values');
+add_action('wp_ajax_nopriv_get_counter_values', 'get_updated_counter_values'); // Allow for non-logged-in users
+
+function enqueue_counter_script() {
+    wp_enqueue_script('counter-update', get_template_directory_uri() . '/assets/js/counter-update.js', ['jquery'], null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_counter_script');
+
