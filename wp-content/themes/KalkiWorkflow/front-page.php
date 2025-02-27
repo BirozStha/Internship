@@ -270,108 +270,108 @@ get_header();
          </div>
 
 
-<!-- Counter -->
-<section class="counter-section">
-    <div class="counter-box">
-        <h2>400 <span class="blue">+</span></h2>
-        <p>Projects Completed</p>
-    </div>
-    <div class="counter-box">
-        <h2>150 <span class="blue">m</span></h2>
-        <p>Hours Coding</p>
-    </div>
-    <div class="counter-box">
-        <h2>700 <span class="blue">+</span></h2>
-        <p>Happy Clients</p>
-    </div>
-</section>
+        <!-- Counter -->
+        <section class="counter-section">
+            <div class="counter-box">
+                <h2>400 <span class="blue">+</span></h2>
+                <p>Projects Completed</p>
+            </div>
+            <div class="counter-box">
+                <h2>150 <span class="blue">m</span></h2>
+                <p>Hours Coding</p>
+            </div>
+            <div class="counter-box">
+                <h2>700 <span class="blue">+</span></h2>
+                <p>Happy Clients</p>
+            </div>
+        </section>
 
-<!-- recent post -->
-<section class="recent-posts">
-    <div class="recent-posts-header">
-        <h2><span class="black">Recent</span> <br> <span class="blue">Posts</span></h2>
-        <a class='view-all' href="<?php echo get_category_link(get_cat_ID('post')); ?>" class="button">VIEW ALL</a>
+        <!-- recent post -->
+        <section class="recent-posts">
+            <div class="recent-posts-header">
+                <h2><span class="black">Recent</span> <br> <span class="blue">Posts</span></h2>
+                <a class='view-all' href="<?php echo get_category_link(get_cat_ID('post')); ?>" class="button">VIEW ALL</a>
 
-    </div>
+            </div>
 
-    <div class="recent-posts-container">
-        <?php
-        $args = array(
-            'post_type'      => 'post',
-            'posts_per_page' => 3,
-            'post_status'    => 'publish',
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-            'tax_query' => array(
-                            array(
-                                'taxonomy' => 'category',
-                                'field'    => 'slug',
-                                'terms'    => 'post',
-                            ),
+            <div class="recent-posts-container">
+                <?php
+                $args = array(
+                    'post_type'      => 'post',
+                    'posts_per_page' => 3,
+                    'post_status'    => 'publish',
+                    'orderby'        => 'date',
+                    'order'          => 'DESC',
+                    'tax_query' => array(
+                                    array(
+                                        'taxonomy' => 'category',
+                                        'field'    => 'slug',
+                                        'terms'    => 'post',
+                                    ),
+                                ),
+
+                            );
+                
+                $query = new WP_Query($args);
+
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post();
+                        $image = get_the_post_thumbnail_url(get_the_ID(), 'large') ?: 'https://via.placeholder.com/600';
+                        $title = get_the_title();
+                        $date = get_the_date('d M, Y');
+                        $link = get_permalink();
+                ?>
+                        <div class="post-card">
+                            <div class="post-image">
+                                <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>">
+                            </div>
+                            <div class="post-info">
+                                <h3><a href="<?php echo esc_url($link); ?>"><?php echo esc_html($title); ?></a></h3>
+                                <p>Admin | <?php echo esc_html($date); ?></p>
+                            </div>
+                        </div>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else :
+                    echo '<p>No posts found.</p>';
+                endif;
+                ?>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="contact-container">
+                <?php
+                $args = array(
+                    'post_type'      => 'post',
+                    'name'           => 'have-an-idea', // 'postname' should be 'name' and use the slug
+                    'posts_per_page' => 1,
+                    'post_status'    => 'publish',
+                    'tax_query'      => array(
+                        array(
+                            'taxonomy' => 'category',
+                            'field'    => 'slug',
+                            'terms'    => 'contact',
                         ),
+                    ),
+                );
 
-                    );
-        
-        $query = new WP_Query($args);
-
-        if ($query->have_posts()) :
-            while ($query->have_posts()) : $query->the_post();
-                $image = get_the_post_thumbnail_url(get_the_ID(), 'large') ?: 'https://via.placeholder.com/600';
-                $title = get_the_title();
-                $date = get_the_date('d M, Y');
-                $link = get_permalink();
-        ?>
-                <div class="post-card">
-                    <div class="post-image">
-                        <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>">
-                    </div>
-                    <div class="post-info">
-                        <h3><a href="<?php echo esc_url($link); ?>"><?php echo esc_html($title); ?></a></h3>
-                        <p>Admin | <?php echo esc_html($date); ?></p>
-                    </div>
-                </div>
-        <?php
-            endwhile;
-            wp_reset_postdata();
-        else :
-            echo '<p>No posts found.</p>';
-        endif;
-        ?>
-    </div>
-</section>
-
-<section class="contact-section">
-    <div class="contact-container">
-        <?php
-        $args = array(
-            'post_type'      => 'post',
-            'name'           => 'have-an-idea', // 'postname' should be 'name' and use the slug
-            'posts_per_page' => 1,
-            'post_status'    => 'publish',
-            'tax_query'      => array(
-                array(
-                    'taxonomy' => 'category',
-                    'field'    => 'slug',
-                    'terms'    => 'contact',
-                ),
-            ),
-        );
-
-        $new_page_query = new WP_Query($args);
-        if ($new_page_query->have_posts()) :
-        ?>
-            <?php while ($new_page_query->have_posts()) : $new_page_query->the_post(); ?>
-                <div class="contact">
-                    <h2>Have an idea? <br><span style="color:blue;" >Tell us about it</span></h2>
-                    <?php the_content(); ?>
-                </div>
-            <?php endwhile;
-            wp_reset_postdata(); ?>
-        <?php else : ?>
-            <p class="no-content">No content found.</p>
-        <?php endif; ?>
-    </div>
-</section>
+                $new_page_query = new WP_Query($args);
+                if ($new_page_query->have_posts()) :
+                ?>
+                    <?php while ($new_page_query->have_posts()) : $new_page_query->the_post(); ?>
+                        <div class="contact">
+                            <h2>Have an idea? <br><span style="color:blue;" >Tell us about it</span></h2>
+                            <?php the_content(); ?>
+                        </div>
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
+                <?php else : ?>
+                    <p class="no-content">No content found.</p>
+                <?php endif; ?>
+            </div>
+        </section>
 
 <?php
 get_footer(); 

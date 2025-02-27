@@ -82,7 +82,7 @@ function zGetAttachmentIdByUrl($image_src) {
 }
 
 
-// cpt for appointment
+// CPT for Appointment
 // Register Appointment Custom Post Type
 function register_appointment_cpt() {
     $labels = [
@@ -109,6 +109,82 @@ function register_appointment_cpt() {
 }
 add_action('init', 'register_appointment_cpt');
 
+// Add Custom Columns in Admin List View
+function add_appointment_columns($columns) {
+    $columns['appointment_date'] = 'Date';
+    $columns['appointment_time'] = 'Time';
+    $columns['appointment_service'] = 'Service';
+    $columns['appointment_status'] = 'Status';
+    $columns['appointment_email'] = 'Email';
+    $columns['appointment_phone'] = 'Phone';
+    $columns['send_mail'] = 'Send Mail';
+    return $columns;
+}
+add_filter('manage_appointment_posts_columns', 'add_appointment_columns');
+
+// Populate Custom Columns in Admin List
+function populate_appointment_columns($column, $post_id) {
+    switch ($column) {
+        case 'appointment_date':
+            echo esc_html(get_post_meta($post_id, '_appointment_date', true) ?: '—');
+            break;
+        case 'appointment_time':
+            echo esc_html(get_post_meta($post_id, '_appointment_time', true) ?: '—');
+            break;
+        case 'appointment_service':
+            echo esc_html(get_post_meta($post_id, '_appointment_service', true) ?: '—');
+            break;
+        case 'appointment_status':
+            echo esc_html(get_post_meta($post_id, '_appointment_status', true) ?: '—');
+            break;
+        case 'appointment_email':
+            echo esc_html(get_post_meta($post_id, '_appointment_email', true) ?: '—');
+            break;
+        case 'appointment_phone':
+            echo esc_html(get_post_meta($post_id, '_appointment_phone', true) ?: '—');
+            break;
+        case 'send_mail':
+            echo '<button class="send_mail_button" data-post-id="' . $post_id . '">Send Mail</button>';
+            break;
+    }
+}
+add_action('manage_appointment_posts_custom_column', 'populate_appointment_columns', 10, 2);
+
+// Sync CPT with Database Table
+// Sync CPT Changes to Database
+function save_appointment_meta($post_id) {
+    if (get_post_type($post_id) !== 'appointment') {
+        return;
+    }
+
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'appointments';
+
+    // Fetch stored appointment ID
+    $appointment_id = get_post_meta($post_id, '_appointment_id', true);
+    if (!$appointment_id) return;
+
+    // Prepare data
+    $data = [
+        'date'    => sanitize_text_field($_POST['_appointment_date']),
+        'time'    => sanitize_text_field($_POST['_appointment_time']),
+        'service' => sanitize_text_field($_POST['_appointment_service']),
+        'status'  => sanitize_text_field($_POST['_appointment_status']),
+        'email'   => sanitize_email($_POST['_appointment_email']),
+        'phone'   => sanitize_text_field($_POST['_appointment_phone']),
+    ];
+
+    // Update database
+    $wpdb->update($table_name, $data, ['id' => $appointment_id]);
+
+    // Ensure CPT metadata is updated
+    foreach ($data as $key => $value) {
+        update_post_meta($post_id, "_appointment_$key", $value);
+    }
+}
+add_action('save_post', 'save_appointment_meta');
+
+// Sync Database Changes Back to CPT
 function sync_appointments_to_cpt() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'appointments';
@@ -122,9 +198,20 @@ function sync_appointments_to_cpt() {
             'numberposts'=> 1
         ]);
 
-        if (!$existing_post) {
+        if ($existing_post) {
+            $post_id = $existing_post[0]->ID;
+
+            // Update CPT if database changes
+            update_post_meta($post_id, '_appointment_date', $appointment->date);
+            update_post_meta($post_id, '_appointment_time', $appointment->time);
+            update_post_meta($post_id, '_appointment_service', $appointment->service);
+            update_post_meta($post_id, '_appointment_status', $appointment->status);
+            update_post_meta($post_id, '_appointment_email', $appointment->email);
+            update_post_meta($post_id, '_appointment_phone', $appointment->phone);
+        } else {
+            // Insert new CPT entry if it doesn't exist
             $post_id = wp_insert_post([
-                'post_title'   => sanitize_text_field($appointment->name . ' - ' . $appointment->date),
+                'post_title'   => sanitize_text_field($appointment->name),
                 'post_status'  => 'publish',
                 'post_type'    => 'appointment',
             ]);
@@ -143,87 +230,111 @@ function sync_appointments_to_cpt() {
 }
 add_action('init', 'sync_appointments_to_cpt');
 
+
+// Add Meta Boxes for Appointment CPT
 function add_appointment_meta_boxes() {
     add_meta_box('appointment_details', 'Appointment Details', 'render_appointment_meta_box', 'appointment', 'normal', 'high');
 }
 add_action('add_meta_boxes', 'add_appointment_meta_boxes');
 
 function render_appointment_meta_box($post) {
-    $date    = get_post_meta($post->ID, '_appointment_date', true);
-    $time    = get_post_meta($post->ID, '_appointment_time', true);
-    $service = get_post_meta($post->ID, '_appointment_service', true);
-    $status  = get_post_meta($post->ID, '_appointment_status', true);
-    $email   = get_post_meta($post->ID, '_appointment_email', true);
-    $phone   = get_post_meta($post->ID, '_appointment_phone', true);
+    $fields = [
+        'date'    => 'Date',
+        'time'    => 'Time',
+        'service' => 'Service',
+        'status'  => 'Status',
+        'email'   => 'Email',
+        'phone'   => 'Phone'
+    ];
 
     echo '<div style="padding: 15px; background: #F9F9F9; border-radius: 8px;">';
-    echo '<label for="_appointment_date"><strong>Date:</strong></label><br>';
-    echo '<input type="date" id="_appointment_date" name="_appointment_date" value="' . esc_attr($date) . '" style="width:100%; padding:8px; margin-bottom:10px;" /><br>';
-    
-    echo '<label for="_appointment_time"><strong>Time:</strong></label><br>';
-    echo '<input type="time" id="_appointment_time" name="_appointment_time" value="' . esc_attr($time) . '" style="width:100%; padding:8px; margin-bottom:10px;" /><br>';
 
-    echo '<label for="_appointment_service"><strong>Service:</strong></label><br>';
-    echo '<input type="text" id="_appointment_service" name="_appointment_service" value="' . esc_attr($service) . '" style="width:100%; padding:8px; margin-bottom:10px;" /><br>';
-
-    echo '<label for="_appointment_status"><strong>Status:</strong></label><br>';
-    echo '<select id="_appointment_status" name="_appointment_status" style="width:100%; padding:8px;">';
-    $statuses = ['Cancelled', 'Pending', 'Confirmed'];
-    foreach ($statuses as $option) {
-        $selected = ($status == $option) ? 'selected' : '';
-        echo '<option value="' . esc_attr($option) . '" ' . $selected . '>' . esc_html($option) . '</option>';
+    foreach ($fields as $key => $label) {
+        $value = get_post_meta($post->ID, "_appointment_$key", true);
+        if ($key == 'status') {
+            echo "<label for='_appointment_$key'><strong>$label:</strong></label><br>";
+            echo "<select id='_appointment_$key' name='_appointment_$key' style='width:100%; padding:8px;'>";
+            foreach (['Cancelled', 'Pending', 'Confirmed'] as $option) {
+                $selected = ($value == $option) ? 'selected' : '';
+                echo "<option value='$option' $selected>$option</option>";
+            }
+            echo "</select><br>";
+        } else {
+            echo "<label for='_appointment_$key'><strong>$label:</strong></label><br>";
+            $type = ($key == 'email') ? 'email' : (($key == 'date') ? 'date' : 'text');
+            echo "<input type='$type' id='_appointment_$key' name='_appointment_$key' value='$value' style='width:100%; padding:8px; margin-bottom:10px;' /><br>";
+        }
     }
-    echo '</select><br>';
-
-    echo '<label for="_appointment_email"><strong>Email:</strong></label><br>';
-    echo '<input type="email" id="_appointment_email" name="_appointment_email" value="' . esc_attr($email) . '" style="width:100%; padding:8px; margin-bottom:10px;" /><br>';
-
-    echo '<label for="_appointment_phone"><strong>Phone:</strong></label><br>';
-    echo '<input type="text" id="_appointment_phone" name="_appointment_phone" value="' . esc_attr($phone) . '" style="width:100%; padding:8px; margin-bottom:10px;" /><br>';
 
     echo '</div>';
 }
 
-function save_appointment_meta($post_id) {
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+//Enqueue Script to Handle Button Click
+function enqueue_send_mail_script() {
+    ?>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            // When Send Mail button is clicked
+            $('.send_mail_button').on('click', function() {
+                var post_id = $(this).data('post-id');
+                
+                // Send AJAX request to handle email sending
+                $.ajax({
+                    url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                    method: 'POST',
+                    data: {
+                        action: 'send_appointment_email',
+                        post_id: post_id
+                    },
+                    success: function(response) {
+                        alert('Email Sent Successfully!');
+                    },
+                    error: function() {
+                        alert('There was an error sending the email.');
+                    }
+                });
+            });
+        });
+    </script>
+    <?php
+}
+add_action('admin_footer', 'enqueue_send_mail_script');
 
-    $updated_data = [];
-    if (isset($_POST['_appointment_date'])) {
-        $updated_data['date'] = sanitize_text_field($_POST['_appointment_date']);
-        update_post_meta($post_id, '_appointment_date', $updated_data['date']);
-    }
-    if (isset($_POST['_appointment_time'])) {
-        $updated_data['time'] = sanitize_text_field($_POST['_appointment_time']);
-        update_post_meta($post_id, '_appointment_time', $updated_data['time']);
-    }
-    if (isset($_POST['_appointment_service'])) {
-        $updated_data['service'] = sanitize_text_field($_POST['_appointment_service']);
-        update_post_meta($post_id, '_appointment_service', $updated_data['service']);
-    }
-    if (isset($_POST['_appointment_status'])) {
-        $updated_data['status'] = sanitize_text_field($_POST['_appointment_status']);
-        update_post_meta($post_id, '_appointment_status', $updated_data['status']);
-    }
-    if (isset($_POST['_appointment_email'])) {
-        $updated_data['email'] = sanitize_email($_POST['_appointment_email']);
-        update_post_meta($post_id, '_appointment_email', $updated_data['email']);
-    }
-    if (isset($_POST['_appointment_phone'])) {
-        $updated_data['phone'] = sanitize_text_field($_POST['_appointment_phone']);
-        update_post_meta($post_id, '_appointment_phone', $updated_data['phone']);
-    }
 
-    // Sync changes back to the database
-    if (!empty($updated_data)) {
-        global $wpdb;
-        $appointment_id = get_post_meta($post_id, '_appointment_id', true);
-        if ($appointment_id) {
-            $wpdb->update(
-                $wpdb->prefix . 'appointments',
-                $updated_data,
-                ['id' => $appointment_id]
-            );
+//Handle AJAX Request for Sending Email:
+function send_appointment_email_ajax() {
+    if (isset($_POST['post_id'])) {
+        $post_id = intval($_POST['post_id']);
+        // Fetch appointment details with proper checks
+        $date = get_post_meta($post_id, '_appointment_date', true);
+        $time = get_post_meta($post_id, '_appointment_time', true);
+        $service = get_post_meta($post_id, '_appointment_service', true);
+        $status = get_post_meta($post_id, '_appointment_status', true);
+        $email = get_post_meta($post_id, '_appointment_email', true);
+        
+        $subject = 'Appointment Notification';
+        $message =  "
+            <h2>Appointment Details</h2>
+            <p><strong>Date:</strong> $date</p>
+            <p><strong>Time:</strong> $time</p>
+            <p><strong>Service:</strong> $service</p>
+            <p><strong>Status:</strong> $status</p>
+            <p><strong>Message:</strong> Please be present on time and date.</p>"; // Customize your message
+
+        // Send email
+        $headers = ['Content-Type: text/html; charset=UTF-8'];
+        $result = wp_mail($email, $subject, $message, $headers);
+
+        if ($result) {
+            wp_send_json_success();
+        } else {
+            wp_send_json_error();
         }
     }
+    wp_die();
 }
-add_action('save_post', 'save_appointment_meta');
+add_action('wp_ajax_send_appointment_email', 'send_appointment_email_ajax');
+
+
+
+//for the counter using meta box
