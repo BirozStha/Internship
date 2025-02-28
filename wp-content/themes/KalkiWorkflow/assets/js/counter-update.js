@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updateCounters();
-    setInterval(updateCounters, 5000); // Auto-update every 5 seconds
+    setInterval(updateCounters, 3000); // Auto-update every 3 seconds
 });
 
 
