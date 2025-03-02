@@ -340,16 +340,33 @@ add_action('wp_ajax_send_appointment_email', 'send_appointment_email_ajax');
 //for the counter using meta box
 // Add meta box for counter values
 function add_counter_meta_box() {
-    add_meta_box(
-        'counter_meta_box', // ID of the meta box
-        'Counter Values', // Title of the meta box
-        'render_counter_meta_box', // Callback function to display the fields
-        'page', // Post type (you can change this to other post types like 'post' or a custom post type)
-        'normal', // Context (normal, side, etc.)
-        'high' // Priority (high, low, etc.)
-    );
+    $home_page_id = get_option('page_on_front'); // Get the ID of the set Home Page
+
+    // Only add the meta box if editing the Home Page
+    if (get_the_ID() == $home_page_id) {
+        add_meta_box(
+            'counter_meta_box', // Meta box ID
+            'Counter Values', // Title
+            'render_counter_meta_box', // Callback function
+            'page', // Post type (only for pages)
+            'normal', // Context
+            'high' // Priority
+        );
+    }
 }
 add_action('add_meta_boxes', 'add_counter_meta_box');
+
+// function add_counter_meta_box() {
+//     add_meta_box(
+//         'counter_meta_box', // ID of the meta box
+//         'Counter Values', // Title of the meta box
+//         'render_counter_meta_box', // Callback function to display the fields
+//         'page', // Post type (you can change this to other post types like 'post' or a custom post type)
+//         'normal', // Context (normal, side, etc.)
+//         'high' // Priority (high, low, etc.)
+//     );
+// }
+// add_action('add_meta_boxes', 'add_counter_meta_box');
 
 // Render the meta box fields
 function render_counter_meta_box($post) {
@@ -390,18 +407,21 @@ add_action('save_post', 'save_counter_meta_box_data');
 
 //Ajax for Counter Using Meta Box
 function get_updated_counter_values() {
-    $post_id = 135; // Fixed homepage ID
+    // Get the current post ID dynamically instead of hardcoding
+    $post_id = 135; // Change this if necessary
 
+    // Fetch latest meta values
     $response = [
         'projects_completed' => get_post_meta($post_id, '_projects_completed', true) ?: '400',
         'hours_coding' => get_post_meta($post_id, '_hours_coding', true) ?: '150',
         'happy_clients' => get_post_meta($post_id, '_happy_clients', true) ?: '700',
     ];
 
-    wp_send_json($response);
+    wp_send_json_success($response); // Send JSON response correctly
 }
 add_action('wp_ajax_get_counter_values', 'get_updated_counter_values');
-add_action('wp_ajax_nopriv_get_counter_values', 'get_updated_counter_values'); // For non-logged-in users
+add_action('wp_ajax_nopriv_get_counter_values', 'get_updated_counter_values'); // Allow non-logged-in users to access
+
 
 function enqueue_counter_script() {
     wp_enqueue_script('counter-update', get_template_directory_uri() . '/assets/js/counter-update.js', ['jquery'], null, true);
