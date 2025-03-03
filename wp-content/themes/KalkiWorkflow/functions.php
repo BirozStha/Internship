@@ -11,6 +11,7 @@ function kalki_style() {
     wp_enqueue_style('kalki_Automation_about', get_template_directory_uri() . '/assets/css/about.css');
     wp_enqueue_style('kalki_Automation_banner', get_template_directory_uri() . '/assets/css/banner.css');
     wp_enqueue_style('kalki_Automation_booking', get_template_directory_uri() . '/assets/css/booking.css');
+    wp_enqueue_style('kalki_Automation_project', get_template_directory_uri() . '/assets/css/project.css');
     //font aswome declear garea ko
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', array(), null, 'all');
     // Enqueue Swiper CSS
@@ -355,18 +356,6 @@ function add_counter_meta_box() {
     }
 }
 add_action('add_meta_boxes', 'add_counter_meta_box');
-
-// function add_counter_meta_box() {
-//     add_meta_box(
-//         'counter_meta_box', // ID of the meta box
-//         'Counter Values', // Title of the meta box
-//         'render_counter_meta_box', // Callback function to display the fields
-//         'page', // Post type (you can change this to other post types like 'post' or a custom post type)
-//         'normal', // Context (normal, side, etc.)
-//         'high' // Priority (high, low, etc.)
-//     );
-// }
-// add_action('add_meta_boxes', 'add_counter_meta_box');
 
 // Render the meta box fields
 function render_counter_meta_box($post) {
