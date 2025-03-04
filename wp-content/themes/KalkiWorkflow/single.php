@@ -30,6 +30,8 @@ $category_slug = !empty($categories) ? $categories[0]->slug : 'uncategorized';
             </div>
         <!--End of the service  -->
 
+
+
         <!-- Start for blog -->
         <!-- Blog Post Layout -->
         <?php elseif (has_category('Blog')) : ?>
@@ -93,9 +95,36 @@ $category_slug = !empty($categories) ? $categories[0]->slug : 'uncategorized';
                 </div>
             </div>
 
+
+
+
+            <!-- project Post Layout -->
+            <?php elseif (has_term('projects', 'product_cat')) : ?>
+                <div class="single-project-container">
+                    <article class="single-project-content">
+                        <div class="single-project-header">
+                            <h1 class="single-project-title"><?php the_title(); ?></h1>
+                        </div>
+
+                        <?php if (has_post_thumbnail()) : ?>
+                            <div class="single-project-image">
+                                <?php the_post_thumbnail('large'); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="single-project-content">
+                            <?php the_content(); ?>
+                        </div>
+
+                        <a href="<?php echo site_url('/projects'); ?>" class="back-project-button">← Back to Projects</a>
+                    </article>
+                </div>
       
-            <?php else : ?>
+
+
+
             <!-- Default Post Layout -->
+            <?php else : ?>
             <article class="default-single-post-content default-layout">
                 
                 <?php if (get_the_title()) : ?>

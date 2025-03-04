@@ -1,16 +1,16 @@
 /* Project Page Container */
 .ps-container {
     max-width: 1300px;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 20px;
     text-align: center;
-    padding-bottom: 90px;
+    /* padding-bottom: 90px; */
 }
 
 .ps-title {
-    font-size: 35px;
+    font-size: 32px;
     font-weight: 600px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 /* Grid Layout - 3 products per row */
@@ -19,7 +19,7 @@
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 30px; /* Space between products */
     justify-content: center;
-    height: 60vh;
+    /* height: 60vh; */
 
 }
 
@@ -27,8 +27,8 @@
 .ps-project-item {
     background: #fff;
     padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
 }
@@ -48,45 +48,58 @@
     width: 100%;
     height: 250px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 12px;
 }
 
 /* Product Title */
 .ps-project-title {
-    font-size: 30px;
-    margin: 15px 0 10px;
+    font-size: 22px;
     color: black;
     text-decoration: none;
+    margin: 15px 0;
 }
 
 /* Product Price */
 .ps-project-price {
-    font-size: 20px;
+    font-size: 18px;
     color: #0073aa;
     font-weight: bold;
-}
-.ps-project-price del {
-    color: gray; /* Style for original price */
-    font-size: 20px;
-    padding-bottom: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.ps-project-price del {
+    color: #888; /* Style for original price */
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* .ps-project-price ins {
+    display: block; 
+    color: #0073aa; 
+
+} */
 .ps-project-price ins {
-    display: block; /* Moves the discounted price below */
+    text-decoration: none;
+    color: #4CAF50;
     font-size: 20px;
     font-weight: bold;
-    color: #0073aa; /* Style for the discounted price */
-    text-decoration: none; /* Removes underline from discounted price */
 }
 
+/* .ps-learn-more {
+    background-color: rgb(124, 239, 86);
+} */
+
+/* View Details Button */
 .ps-learn-more {
     display: inline-block;
     margin-top: 10px;
-    padding: 8px 15px;
-    background-color: rgb(124, 239, 86);
-    color: white;
+    padding: 10px 15px;
+    background-color: #0073aa;
+    color: #fff!important;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: normal;
     border-radius: 5px;
     transition: background 0.3s ease;
 }
@@ -104,15 +117,22 @@
     margin-top: 20px;
 }
 
-add-to-cart-button {
-    background: #FF9800;
-    color: #fff;
-    border: 2px solid #FF9800;
-  }
+/* Add to Cart Button */
+.add-to-cart-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: #fff!important;
+    text-decoration: none;
+    font-weight: normal;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
 .add-to-cart-button:hover {
-    background: #E68900;
-    border-color: #E68900;
-  }
+    background-color: #218838;
+}
 
 /* Responsive Design */
 @media (max-width: 1024px) {

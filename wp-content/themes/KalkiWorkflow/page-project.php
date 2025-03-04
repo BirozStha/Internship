@@ -30,11 +30,11 @@ get_header();
                     <a href="<?php the_permalink(); ?>">
                         <?php the_post_thumbnail('medium', ['class' => 'ps-project-img']); ?>
                         <h3 class="ps-project-title"><?php the_title(); ?></h3>
-                        <p class="ps-project-price">Price: <?php echo $product->get_price_html(); ?></p>
-                        <a href="<?php the_permalink(); ?>" class="ps-learn-more">VIEW DETAILS</a>
+                        <p class="ps-project-price"><span>Price:</span><?php echo $product->get_price_html(); ?></p>
+                        <a href="<?php the_permalink(); ?>" class="ps-learn-more">View details</a>
                         <a href="<?php echo esc_url($product->add_to_cart_url()); ?>"
                             data-quantity="1"
-                            class="add-to-cart-button button ajax_add_to_cart"
+                            class="add-to-cart-button"
                             data-product_id="<?php echo esc_attr($product->get_id()); ?>"
                             data-product_sku="<?php echo esc_attr($product->get_sku()); ?>">
                             <?php echo esc_html($product->add_to_cart_text()); ?>

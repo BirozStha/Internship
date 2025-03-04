@@ -233,3 +233,60 @@
     line-height: 1.6;
     color: #333;
 }
+
+/* Single Project Post Layout */
+.single-project-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+.single-project-title {
+    font-size: 45px;
+    font-weight: 600px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+.single-project-image img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+.single-project-content {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: justify;
+}
+
+.back-project-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: #4CAF50;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.back-project-button:hover {
+    background: #388E3C;
+}
+
+
+
