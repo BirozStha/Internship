@@ -1,0 +1,96 @@
+/* -------------for archieve----------- */
+.archive-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Page Title */
+.archive-page-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* Grid Layout - Two Cards Per Row */
+.archive-service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Ensures exactly 2 cards per row */
+    gap: 40px; /* Space between cards */
+    justify-content: center;
+}
+
+/* Card Styling */
+.archive-service-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    padding: 40px; /* Increased padding */
+    width: 100%; /* Make it stretch properly */
+    max-width: 600px; /* Increase max width */
+    min-height: 350px; /* Ensure all cards have a minimum height */
+    display: flex;
+    flex-direction: column;
+}
+
+.archive-service-card:hover {
+    transform: translateY(-9px);
+}
+
+/* Card Content */
+.archive-service-content {
+    padding: 15px;
+}
+
+.archive-service-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.archive-service-excerpt {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Pagination */
+.archive-pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.archive-pagination a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #007bff;
+    color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.archive-pagination a:hover {
+    background: #007bff;
+    color: white;
+}
+
+/* No Services Message */
+.archive-no-services {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .archive-service-grid {
+        grid-template-columns: 1fr; /* 1 card per row on small screens */
+    }
+}
+

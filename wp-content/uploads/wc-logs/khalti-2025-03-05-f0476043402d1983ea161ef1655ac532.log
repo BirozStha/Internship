@@ -1,0 +1,76 @@
+2025-03-05T10:27:52+00:00 INFO Generating payment form for order 670. Notify URL: http://wordpress.test/wc-api/WC_Gateway_Khalti/
+2025-03-05T10:27:52+00:00 INFO Khalti Request Args for order : 670Array
+(
+    [return_url] => http://wordpress.test/wc-api/WC_Gateway_Khalti/
+    [website_url] => http://wordpress.test
+    [amount] => 502000
+    [purchase_order_id] => wc_order_zP14MLaAMZS81
+    [purchase_order_name] => wc_order_zP14MLaAMZS81
+    [product_details] => Array
+        (
+            [0] => Array
+                (
+                    [identity] => 636
+                    [name] => Booking Website
+                    [quantity] => 1
+                    [unit_price] => 500000
+                    [total_price] => 500000
+                )
+
+        )
+
+    [customer_info] => Array
+        (
+            [name] => matat intern
+            [email] => birojlalshrestha.kalki@gmail.com
+            [phone] => 9840188324
+        )
+
+    [amount_breakdown] => Array
+        (
+            [0] => Array
+                (
+                    [label] => Mark Price
+                    [amount] => 500000
+                )
+
+            [1] => Array
+                (
+                    [label] => Shipping Charge
+                    [amount] => 2000
+                )
+
+            [2] => Array
+                (
+                    [label] => VAT
+                    [amount] => 0
+                )
+
+        )
+
+)
+
+2025-03-05T10:28:26+00:00 INFO IPN Response: Array
+(
+    [status] => Completed
+    [t] => txn
+    [idx] => DNRgQDQq3uQWadfUZnPDmF
+    [token] => exxRVcUEfvzbEudxbmo3U4
+    [bank_reference] => None
+    [amount] => 502000
+    [mobile] => 98XXXXX210
+    [transaction_id] => DNRgQDQq3uQWadfUZnPDmF
+    [tidx] => DNRgQDQq3uQWadfUZnPDmF
+    [total_amount] => 502000
+    [purchase_order_id] => wc_order_zP14MLaAMZS81
+    [purchase_order_name] => wc_order_zP14MLaAMZS81
+    [pidx] => nNcKGcrKys4AAhtAnnYYCW
+    [woocommerce-login-nonce] => 
+    [_wpnonce] => 
+    [woocommerce-reset-password-nonce] => 
+)
+
+2025-03-05T10:28:26+00:00 INFO Validating IPN response
+2025-03-05T10:28:28+00:00 INFO Payment Verification: Successful
+2025-03-05T10:28:28+00:00 INFO Found order #670
+2025-03-05T10:28:28+00:00 INFO Payment status: completed

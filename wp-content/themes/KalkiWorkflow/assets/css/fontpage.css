@@ -1,0 +1,848 @@
+.container-achieve {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    /* text-align: center;       */
+    background-color: white;
+    margin: 0;
+    padding: 50px;
+}
+.achieve {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    /* background-color: #fff;  */
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  */
+    margin: 0;
+}
+
+.serv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* text-align: center;       */
+    background-color: #F5f5f5;
+    margin: 0;
+    padding: 50px;
+    /* position: relative; */
+    /* flex-direction: column; */
+
+}
+.service{
+    max-width: 1500px;
+    width: 100%;
+    padding: 0px;
+    /* background-color: #fff;  */
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  */
+    margin-left: 0; /* Aligns the div to the left */
+    margin-right: auto;
+
+
+}
+
+/* Ensures the service section aligns properly */
+.container-mata-service .service {
+    display: flex;
+    flex-direction: row; /* Make sure the flex direction is row */
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    max-width: 1500px;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.container-mata-service .wp-block-media-text__media img {
+    border-radius: 50%; /* Make the image round */
+    object-fit: cover;  /* Ensure the image fills the container */
+    width: 200px;       /* Adjust the image size */
+    height: 200px;      /* Maintains aspect ratio */
+    position: relative;
+    padding-left: 0px;
+}
+
+.container-mata-service .wp-block-media-text {
+    display: flex;
+    flex-direction: row-reverse; /* Keep image on the right */
+    align-items: flex-start;  /* Align everything to the top */
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.container-mata-service .wp-block-media-text__content {
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ensures text starts from the left */
+    justify-content: flex-start; /* Align content to the top */
+    gap: 15px; /* Adds spacing between elements */
+    padding-top: 0px; /* Ensures content is at the top */
+    margin-top: 0; /* Removes any extra margin */
+}
+
+.container-mata-service .wp-block-media-text__content h1 {
+    font-size: 36px; /* Increase category name size */
+    font-weight: bold;
+}
+
+.container-mata-service .wp-block-media-text__content p {
+    font-size: 18px;
+    padding-right:20px; 
+    margin-bottom: 20px;    
+}
+
+.view-all-button .button {
+    background-color: #007bff; /* Blue background */
+    color: white;              /* White text */
+    padding: 12px 25px;        /* Adjust padding for larger button */
+    font-size: 18px;           /* Make the button text bigger */
+    border: none;              /* Remove the border */
+    border-radius: 5px;        /* Rounded corners */
+    text-decoration: none;     /* Remove underline */
+    display: inline-block;     /* Ensure it aligns properly */
+    transition: background-color 0.3s ease; /* Smooth background change on hover */
+}
+
+.view-all-button .button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+/* Circle Container - Move Circles Above the Image */
+.circle-container {
+    position: relative;
+    top: 30%;
+    right: 15%; /* Adjusted to prevent cramping */
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+}
+
+/* Common Circle Styles */
+.circle {
+    width: 240px;  
+    height: 240px; 
+    background-color: #fefefe; 
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    position: absolute;
+}
+
+.circle:hover {
+    background-color: #3498db; /* Light blue color */
+}   
+
+/* Positioning the Circles - Adjusted for Bigger Size */
+.circle-1 {
+    top: 80px; /* Moves it higher */
+    left: 62%;
+    transform: translateX(-50%);
+}
+
+.circle-1 i {
+    font-size: 24px; /* Adjust icon size */
+    margin-bottom: 5px; /* Spacing below the icon */
+}
+
+
+.circle-1 h2 {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+
+.circle-1 h3 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+
+.circle-4 {
+    bottom: -283px; /* Moves it lower */
+    left: 62%;
+    transform: translateX(-50%);
+}
+
+/* Bottom Circle Icon */
+.circle-4 i {
+    font-size: 30px;  /* Make the icon bigger */
+    margin-bottom: 10px; /* Space below the icon */
+
+}
+
+/* Title in Bottom Circle */
+.circle-4 h1 {
+    font-size: 18px; /* Adjust the size of the title */
+    margin: 5px 0;
+}
+
+.circle-4 h3 {
+    font-size: 14px; /* Adjust size of the description */
+    font-weight: normal;
+}
+
+
+
+.circle-2 {
+    left: -120px; /* Moves it left */
+    top: 90%;
+    transform: translateY(-50%);
+}
+
+.circle-2 i {
+    font-size: 30px;  /* Make the icon bigger */
+    margin-bottom: 10px; /* Space below the icon */
+
+}
+
+/* Title in Left Circle */
+.circle-2 h1 {
+    font-size: 18px; /* Adjust the size of the title */
+    margin: 5px 0;
+}
+
+/* Description in Left Circle */
+.circle-2 h3 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+
+.circle-3 {
+    right: -226px; /* Moves it right */
+    top: 90%;
+    transform: translateY(-50%);
+}
+
+/* Right Circle Icon */
+.circle-3 i {
+    font-size: 30px;  /* Make the icon bigger */
+    margin-bottom: 10px; /* Space below the icon */
+}
+
+/* Title in Right Circle */
+.circle-3 h1 {
+    font-size: 18px; /* Adjust the size of the title */
+    margin: 5px 0;
+}
+
+/* Description in Right Circle */
+.circle-3 h3 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* Carousel Section */
+.projects-carousel-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: white;
+    
+}
+
+/* Left Text Section */
+.carousel-text-section {
+    width: 40%;
+    text-align: left;
+}
+
+.carousel-text-section h2 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.carousel-text-section .blue-text {
+    color: #007BFF;
+}
+
+.view-all-btn {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Navigation Arrows */
+.carousel-navigation {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px; /* Space below "View All" */
+}
+
+/* Style for custom navigation buttons */
+
+#prev-serv-btn,
+#next-serv-btn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover Effects */
+#prev-serv-btn:hover,
+#next-serv-btn:hover {
+    background-color: #70a6e0;
+}
+
+/* Ensuring Arrows Are Centered */
+#prev-serv-btn span,
+#next-serv-btn span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Right Carousel Section */
+.carousel-container {
+    width: 60%;
+    overflow: hidden;
+
+    
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Project Card */
+.post-item {
+    width: 100%;
+    max-width: 350px;
+    background: white;
+    border-radius: 0px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #2d2b2b4c;
+    position: relative; /* Ensure positioning */
+    padding-bottom: 20px; /* Add spacing at bottom */
+
+}
+
+.post-item img {
+    width: 100%;
+    height: 200px; /* Keep consistent image height */
+    object-fit: cover;
+}
+
+.post-item h2, 
+.post-item p {
+    padding: 2px;
+    text-align: center;
+}
+
+/* Testimonial */
+
+.testimonial-title {
+    text-align: left;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 100px;
+    padding-top: 20px;
+    margin-left: 330px;
+    background: #F5F5F5;
+}
+
+.testimonial-title h1 {
+    font-size: 80px;
+    color: black;
+}
+
+.testimonial-title h1 span {
+    color: blue;
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.test{
+    background:#F5F5F5;
+}
+.testimonials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 338px; /* Increase height */
+    background: #F5F5F5;
+    padding: 0;
+}
+
+.testimonial-wrapper {
+    display: flex;
+    align-items: stretch; /* Ensures all child elements have the same height */
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 800px;
+    /* height: 100%;  */
+}
+.arrow {
+    flex: 0 0 150px; /* Same width as image */
+    height: 270px; /* Increases height */
+    background: blue;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+.arrow img {
+    width: 150px;
+    height: 270px;
+    object-fit: cover;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.arrow span {
+    position: relative;
+    z-index: 2;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+}
+.testimonial-content {
+    flex-grow: 1;
+    background: white;
+    /* border-radius: 10px; */
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 500px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.testimonial-slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+.testimonial-slide {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+.testimonial-img {
+     flex: 0 0 20%;/* Image takes up 40% */
+    height: 100%;
+    overflow: hidden;
+}
+.testimonial-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* border-radius: 10px 0 0 10px;  */
+}
+.testimonial-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 40px;
+}
+.testimonial-text p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+.testimonial-text h3 {
+    font-weight: bold;
+    margin-top: 10px;
+}
+/* Counter */
+.counter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 100px;
+    padding: 100px ;
+}
+.counter-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.counter-box h2 {
+    font-size: 48px;
+    font-weight: bold;
+    color: black;
+}
+.counter-box p {
+    font-size: 16px;
+    color: gray;
+    margin-top: 5px;
+}
+.blue {
+    color: blue;
+    font-weight: bold;
+}
+/* Add dividers */
+.counter-box:not(:last-child)::after {
+    content: "";
+    width: 2px;
+    height: 50px;
+    background-color:#F5F5F5 ;
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.counter-section-wrap{
+    width: 100%;
+    background-color: white;
+  }
+
+/* recent posts */
+.recent-post-wrap{
+    width: 100%;
+  }
+
+.recent-posts {
+    max-width: 1900px;
+    width: 100%;
+    /* margin: auto; */
+    height: 800px;
+    /* padding: 100px 0; */
+    padding-left: 250px;
+    padding-right: 250px;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    background-color: #f5f5f5;
+
+
+    /* background-color: white; */
+}
+
+/* Header with Title & Button */
+.recent-posts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.recent-posts-header h2 {
+    font-size: 69px;
+    font-weight: bold;
+}
+
+.black {
+    color: black;
+}
+
+.blue {
+    color: blue;
+}
+
+.view-all {
+    background: blue;
+    color: #F5F5F5;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.view-all:hover {
+    background: darkblue;
+}
+
+/* Post Grid */
+.recent-posts-container {
+    height: 275px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Post Card */
+.post-card {
+    width: 32%;
+    position: relative;
+    border-radius: 10px;
+    /* overflow: hidden; */
+}
+.post-card:hover{
+    color: blue;
+
+
+}
+
+/* Image Styling */
+.post-image img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Floating Info Box */
+.post-info {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0;  /* Keep it rectangular */
+    border: 2px solid #ddd; /* Light gray border */
+    position: absolute;
+    bottom: -40%; /* Moves it slightly up but avoids cutoff */
+    left: 12%;
+    width: 93%; /* Wider towards the right */
+    height: 140px; /* Increased height for better spacing */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.post-info:hover{
+    background-color: #3498db;
+}
+
+
+/* Title Styling */
+.post-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.post-info a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+/* Admin & Date */
+.post-info p {
+    font-size: 14px;
+    color: gray;
+    margin-top: 5px; /* Added margin to avoid it being cut off */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .recent-posts-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .post-card {
+        width: 100%;
+    }
+
+    .post-info {
+        bottom: -10%; /* Adjust for smaller screens */
+        height: auto; /* Let it adjust dynamically */
+    }
+}
+
+
+/* Contact Section Wrapper */
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0; /* Increased padding for top & bottom spacing */
+    margin-top: 0px; /* Adds extra space from the top */
+    background-color: white; /* Set background color for the entire section */
+    width: 100%; /* Ensures the section fills the width */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    margin-bottom: 0;
+    padding-bottom: 0; 
+}
+
+/* Inner Container */
+.contact-container {
+    width: 100%; /* Make the container fill the full width */
+    max-width: 2000px; /* Increase max-width for a wider container */
+    background: white; /* White background for the container */
+    padding: 0px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;
+}
+
+.contact h2{
+    font-size: 80px;
+    margin-left: 850px;
+    margin-bottom: 0;
+}
+
+/* Heading */
+/* .contact h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+} */
+
+/* Paragraph/Text */
+.contact p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Links Inside Content */
+.contact a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Category Styling */
+.contact .post-categories {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* No Content Message */
+.no-content {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        width: 100%; /* Ensure container stretches full width on mobile */
+        padding: 30px;
+    }
+
+    .contact h2 {
+        font-size: 24px;
+    }
+
+    .contact p {
+        font-size: 14px;
+    }
+}
+
+
+/* Contact Form Styling */
+/* Make the Contact Section Wider */
+.wpcf7 {
+    max-width: 800px; /* Adjust width */
+    margin: auto;
+}
+
+/* Flexbox Layout for Two-Column Fields */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Individual Field Styling */
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Set Width for Left & Right Columns */
+.form-group.left, 
+.form-group.right {
+    width: 48%;
+}
+
+/* Remove Box Styling & Keep Only Underline */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    padding: 10px 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Make Textarea Behave Like a Single Line */
+.form-group textarea {
+    height: 40px;
+    resize: none;
+}
+
+/* Style the Placeholder */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: black;
+    opacity: 0.7;
+    font-size: 16px;
+}
+
+/* Submit Button Styling */
+.form-group [type="submit"] {
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 0;
+    transition: background 0.3s;
+}
+
+.form-group [type="submit"]:hover {
+    background: #333;
+}

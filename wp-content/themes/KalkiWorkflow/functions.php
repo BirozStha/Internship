@@ -3,23 +3,49 @@ function kalki_style() {
     // Enqueue jQuery
     wp_enqueue_script('jquery');
     // Enqueue custom CSS
-    wp_enqueue_style('kalki_Automation', get_template_directory_uri() . '/assets/css/custom.css');
+
+    //Css For Archive page
+    wp_enqueue_style('kalki_Automation_archive', get_template_directory_uri() . '/assets/css/archive.css');
+
+    //css for font-page
+    wp_enqueue_style('kalki_Automation_fontpage', get_template_directory_uri() . '/assets/css/fontpage.css');
+
+    //css for Service Page
     wp_enqueue_style('kalki_Automation_service', get_template_directory_uri() . '/assets/css/service.css');
+
+    // Css for blog page
     wp_enqueue_style('kalki_Automation_blog', get_template_directory_uri() . '/assets/css/blog.css');
+
+    // css for single Page
     wp_enqueue_style('kalki_Automation_single', get_template_directory_uri() . '/assets/css/single.css');
+
+    // css for contact page
     wp_enqueue_style('kalki_Automation_contact', get_template_directory_uri() . '/assets/css/contact.css');
+
+    // css for about page
     wp_enqueue_style('kalki_Automation_about', get_template_directory_uri() . '/assets/css/about.css');
-    wp_enqueue_style('kalki_Automation_banner', get_template_directory_uri() . '/assets/css/banner.css');
+
+    //css for booking page
     wp_enqueue_style('kalki_Automation_booking', get_template_directory_uri() . '/assets/css/booking.css');
+
+    //css for project Page
     wp_enqueue_style('kalki_Automation_project', get_template_directory_uri() . '/assets/css/project.css');
+    
+    //css for header,footer and random
+    wp_enqueue_style('kalki_Automation', get_template_directory_uri() . '/assets/css/custom.css');
+
     //font aswome declear garea ko
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', array(), null, 'all');
+    
     // Enqueue Swiper CSS
     wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+    
     // Enqueue Swiper JS
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array('jquery'), null, true);
+    
     // Enqueue custom JS for the carousel
     wp_enqueue_script('custom-carousel-js', get_template_directory_uri() . '/assets/js/featured.js', array('swiper-js', 'jquery'), null, true);
+    
     // Localize script to pass data from PHP to JS (if needed)
     wp_localize_script('custom-carousel-js', 'kalki_ajax', array(
         'ajax_url' => admin_url('admin-ajax.php'),
@@ -422,4 +448,34 @@ function enqueue_counter_script() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_counter_script');
 
+function add_dynamic_account_menu($items, $args) {
+    if ($args->theme_location == 'primary') { // Change 'primary' if needed
+        $account_url = esc_url(wc_get_page_permalink('myaccount'));
+        $logout_url = esc_url(wp_logout_url(home_url()));
+        
+        if (is_user_logged_in()) {
+            // If user is logged in, show My Account and Logout
+            $items .= '
+            <li class="menu-item menu-item-has-children">
+                <a href="#">Account</a>
+                <ul class="sub-menu">
+                    <li><a href="' . $account_url . '">My Account</a></li>
+                    <li><a href="' . $logout_url . '">Logout</a></li>
+                </ul>
+            </li>';
+        } else {
+            // If user is logged out, show Login & Register
+            $items .= '
+            <li class="menu-item menu-item-has-children">
+                <a href="#">Account</a>
+                <ul class="sub-menu">
+                    <li><a href="' . $account_url . '">Login</a></li>
+                    <li><a href="' . $account_url . '?register=1">Register</a></li>
+                </ul>
+            </li>';
+        }
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'add_dynamic_account_menu', 10, 2);
 
