@@ -54,4 +54,22 @@
             ));
             ?>
         </div>
+
+        <div class="user-account">
+    <?php if (is_user_logged_in()) : ?>
+        <?php
+        $current_user = wp_get_current_user();
+        $username = $current_user->display_name;
+        ?>
+        <div class="dropdown">
+            <button class="dropbtn"> <?php echo esc_html($username). '▼'; ?> </button>
+            
+            <div class="dropdown-content">
+                <a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>">Dashboard</a>
+                <a href="<?php echo wp_logout_url(home_url()); ?>">Logout</a>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+
     </nav>

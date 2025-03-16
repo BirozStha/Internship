@@ -1,0 +1,110 @@
+
+html,body {
+    font-family: 'Heebo','Varela Round',sans-serif;
+    font-size: 18px
+}
+
+* {
+    min-height: 0;
+    min-width: 0
+}
+
+.post-nav {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    text-align: right;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
+    height: 60px; /* Adjust height as needed */
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    padding-top: 10px;
+    padding-right: 250px;
+}
+
+.nav-menu li {
+    position: relative;
+    display: inline-block;
+    
+}
+
+.nav-menu a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 5px 10px;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-menu a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #9a4a63;
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+/* Expand the underline on hover */
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* Highlight the active page */
+.nav-menu li.current-menu-item a::after {
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0; 
+    padding: 0;
+    
+}
+ 
+.logo img {
+    height: 29%; /* Make logo stretch to navbar height */
+    max-height: 100px;
+    width: auto;
+    padding-top: 20px;
+    margin-left: 150px;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+/* banner */
+.banner a img{
+    padding-left:150px;
+    padding-right: 150px;
+    padding-top: 30px;
+    width: 80%;
+    height: 560px; /* Adjust height as needed */
+}
