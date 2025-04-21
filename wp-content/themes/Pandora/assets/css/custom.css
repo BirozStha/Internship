@@ -21,6 +21,8 @@ html,body {
     align-items: center;
     box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
     height: 60px; /* Adjust height as needed */
+    width: 100%;
+    justify-content: space-between;
 }
 
 .nav-menu {
@@ -69,13 +71,6 @@ html,body {
 /* Highlight the active page */
 .nav-menu li.current-menu-item a::after {
     width: 100%;
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
 }
 
 .logo {

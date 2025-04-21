@@ -11,7 +11,6 @@
 
     <!-- Navigation Menu (Visible on All Pages) -->
     <nav class="post-nav">
-        <div class="nav-container">
             
             <div class="logo">
                 <div class="bg">
@@ -30,5 +29,5 @@
                 'container'  => false // Avoid extra divs
             ));
             ?>
-        </div>
+
     </nav>
