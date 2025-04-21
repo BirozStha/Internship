@@ -16,3 +16,4 @@
     <?php endwhile; endif; ?>
 </div>
 <?php get_footer(); ?>
+<!-- for this to be display use this http://wordpress.test/projects/ -->
