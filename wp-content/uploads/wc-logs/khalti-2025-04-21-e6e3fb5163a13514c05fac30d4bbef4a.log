@@ -1,0 +1,25 @@
+2025-04-21T16:24:50+00:00 INFO IPN Response: Array
+(
+    [status] => Completed
+    [t] => txn
+    [idx] => 74iBNyGzZATFj62wjpFp2N
+    [token] => cPRh4oKHBnMGLCNZj2EscT
+    [bank_reference] => None
+    [amount] => 502000
+    [mobile] => 98XXXXX210
+    [transaction_id] => 74iBNyGzZATFj62wjpFp2N
+    [tidx] => 74iBNyGzZATFj62wjpFp2N
+    [total_amount] => 502000
+    [purchase_order_id] => wc_order_Nl9Sk3auclDcP
+    [purchase_order_name] => wc_order_Nl9Sk3auclDcP
+    [pidx] => FsDW7xEu29uZxs7UncRXC4
+    [woocommerce-login-nonce] => 
+    [_wpnonce] => 
+    [woocommerce-reset-password-nonce] => 
+)
+
+2025-04-21T16:24:50+00:00 INFO Validating IPN response
+2025-04-21T16:24:52+00:00 INFO Payment Verification: Successful
+2025-04-21T16:24:52+00:00 INFO Found order #679
+2025-04-21T16:24:52+00:00 INFO Payment status: completed
+2025-04-21T16:24:52+00:00 INFO Aborting, Order #679 is already complete.
