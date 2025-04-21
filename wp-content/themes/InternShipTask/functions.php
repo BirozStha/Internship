@@ -32,7 +32,7 @@ function project_details_callback($post) {
     <label>Client Name:</label>
     <input type="text" name="client_name" value="<?= esc_attr($client) ?>"><br>
     <label>Deadline:</label>
-    <input type="date" name="project_deadline" value="<?= esc_attr($deadline) ?>"><br>
+    <input type="text" name="project_deadline" value="<?= esc_attr($deadline) ?>"><br>
     <label>Status:</label>
     <select name="project_status">
         <option <?= selected($status, 'Not Started') ?>>Not Started</option>
@@ -51,3 +51,20 @@ function save_project_meta($post_id) {
         update_post_meta($post_id, '_project_status', $_POST['project_status']);
 }
 add_action('save_post', 'save_project_meta');
+
+function enqueue_datepicker_admin_assets($hook) {
+    global $post_type;
+    if ($post_type !== 'projects') return;
+
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_enqueue_style('jquery-ui-css', 'https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css');
+    wp_enqueue_script(
+        'project-datepicker',
+        get_template_directory_uri() . '/assets/js/project-datepicker.js',
+        ['jquery', 'jquery-ui-datepicker'],
+        null,
+        true
+    );
+}
+add_action('admin_enqueue_scripts', 'enqueue_datepicker_admin_assets');
+
